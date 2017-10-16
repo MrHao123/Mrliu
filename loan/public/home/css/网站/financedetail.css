@@ -1,0 +1,136 @@
+﻿@CHARSET "UTF-8";
+/*2014.4.28*/
+.container_other{background:none;}
+.elite_box{border:1px solid #cdcdcd;}
+.elite_box .table_gray{width:700px;margin:0 auto;}
+.elite_tit{border-bottom:1px solid #cdcdcd;background:#0099df;padding:5px 20px;height:48px;}
+.elite_tit p strong{padding:10px 0 0 0;display:block;font-size:14px;color:#fff;}
+.elite_tit p span{padding:0 0 0 0;display:block;width:200px;}
+.elite_tit p span a{display:block;text-align:right;color:#fff;}
+.elite_tit p img{position:relative;top:9px;left:9px;}
+.elite_bg,.elite_bg_transfer{background:url(../images/jyz_bg.png) no-repeat 0 1px;width:44px;height:46px;margin-right:15px;}
+.elite_bg_transfer{ background-position:0 -55px;}
+.elite_left{width:615px;padding:40px 0;display:inline;overflow:hidden;}
+.loadingNum2{background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #DCDCDC;height:16px;padding-right: 2px;width:178px;margin-right:5px;}
+.loadingNum_bar2{background:url(../images/loadingbg_x.gif) repeat-x 0 0;height:16px;}
+.elite_table td{color:#696969;font-size:14px;font-family:"microsoft yahei";padding-left:0;border-right:1px solid #e5e5e5;text-align:center;}
+.elite_table .num td{font-size:18px;}
+.elite_table strong,.elite_table strong span,.surplus_money strong{font-size:50px;font-family:Arial;font-weight:normal;color:#696969}
+.elite_table td.orange{color:#ff7200;font-size:24px;}
+.elite_table td.orange strong{color:#ff7200}
+.elite_table .tender_completed{color:#0099df;font-size:12px;}
+.elite_table strong span,.surplus_money strong span{font-size:18px;}
+.elite_left h3,.basic_information h3{font-size:12px;padding:12px 0;}
+.elite_left p{line-height:22px;}
+.elite_right{width:270px;padding-left:20px;}
+.elite_box .common_box{width:998px;margin:15px auto 0;border-bottom: 1px solid #DFDFDF;position:relative;min-height:260px;_height:260px;height:auto!important;}
+.basic_information{width:400px;padding:20px 0 20px 16px;}
+.basic_information ul li{float:left;width:170px;padding-bottom:10px;}
+.audit_edition{background:url(../images/audit_edition.jpg) no-repeat 0 0;width:337px;height:190px;padding:87px 0 0 144px;}
+.audit_edition p{line-height:24px;padding-bottom:8px;}
+.by{position:absolute;top:110px;left:353px;}
+.elite_box .table_gray strong,.service_introduction p strong,.service_advantage p strong,.calculators_result table td strong{color:#c10000;}
+.q_mark img{position:relative;top:3px;left:5px;}
+.elite_right .buy_but{text-align:center;padding-bottom:0;position:relative}
+.elite_right .buy_but .red{color:#ff0000;position:absolute;top:-16px;left:1px}
+.elite_right .income{font-size:10px;color:#414141;font-family:"microsoft yahei";margin-top:10px}
+.elite_right .income .red{color:#ff4c2e}
+.nomenu{background:#f4f4f4;}
+/*.finance_box{background:#fff;padding:20px;}*/
+.finance_box{background:#fff;padding:0 20px 20px 20px;}
+.elite_title{
+    width:960px;
+    margin:0 auto;
+    height:80px;
+    border-bottom:1px solid #e7e7e7;
+}
+.elite_title_ymy{
+    width:960px;
+    margin:0 auto;
+    height:80px;
+}
+.elite_title_left{
+    height:80px;
+    line-height:80px;
+    font-family:'微软雅黑 Regular';
+    font-size:24px;
+    color:#696969;
+}
+.new_elite_title_left{
+	height:40px;
+	line-height:40px;
+	margin-top:20px;
+	margin-left:80px;
+}
+.elite_title_right{
+    width:100px;
+    height:30px;
+    background-color:#4bc1ff;
+    border-radius:20px;
+    margin-top:25px;
+    color:#fff;
+    font-size:14px;
+    font-family:'微软雅黑 Regular';
+    text-align:center;
+    line-height:30px;
+}
+.elite_wrap{
+    margin-top:20px;
+}
+.elite_right p .orange{font-size:30px;}
+.finance_box h2{height:60px;border-bottom:1px solid #e3e3e3;font-size:18px;font-family:"microsoft yahei";font-weight:bold;}
+.finance_box .inner_box {text-align:center;}
+.finance_box .inner_box img{padding-top: 20px;margin: auto;}
+.productDetail{margin-top:50px;table-layout:fixed}
+.productDetail td.dd{background-color:#f3fafe;text-align:center;font-weight:bold;width:140px;padding:10px 0}
+.productDetail td{background-color:#fcfcfd;font-size:14px;color:#696969;font-family:"microsoft yahei";padding:10px 1em; }
+.elite_right p.rest{font-size:14px;font-family:"microsoft yahei";}
+.steptxt{position:absolute;top:85px;left:122px;width:90%;}
+.steptxt li{color:#ff902e;font-size:14px;font-weight:bold;font-family:"microsoft yahei";width:238px;float:left;}
+.elite_right .buy_but .m-input-normal{height:40px;line-height:40px}
+.elite_right{padding:0 0 0 50px;background:#fff}
+.progressTxt{   font-family: "microsoft yahei";}
+.bid_progress{margin-top:30px;padding-left:40px;}
+.progressBg{width:300px;height:16px;background-color:#f2f2f2;border-radius:16px;margin-top:4px;position:relative;margin-right:10px;}
+.progressNow{height:16px;background-color:#fdcc41;border-radius:16px;position:absolute;top:0;left:0;}
+.progressTxt{font-size:14px;}
+.progressTxt span{font-size:18px;}
+ul.steptxt{position:absolute;top:85px;left:122px;width:90%;}
+.steptxt li{color:#ff902e;font-size:14px;font-weight:bold;font-family:"microsoft yahei";width:238px;float:left;}
+.financeProduct .m-tabT{border-top:none;border-bottom:none;font-family: "microsoft yahei";background:transparent}
+.financeProduct .m-tabT a.m-tabTA{background-color:#fbfbfb;border-right:none;border-left:none;}
+.financeProduct .m-tabT a.m-tabTActive{border-top:3px solid #fdcc41;color:#696969;background-color:#fff;height:44px;}
+.financeProduct .m-tab{border:none;background:transparent}
+.financeProduct .m-tabC{padding:20px 40px;background:#fff}
+.financeProduct .icontit{margin:5px 10px 0 0;}
+.icon-pass{background:url(../images/icon-pass.png) no-repeat;width:16px;height:16px;display:inline-block;margin-right:5px;vertical-align: middle;}
+.oneInfo{float:left;width:410px;position:relative;margin-right:50px;height:300px;margin-bottom:30px;}
+.oneInfo table td{padding:8px 0 8px 20px;background:#fcfcfd;font-family: "microsoft yahei"}
+.oneInfo table td.dd{padding-left:0;text-align:center;background:#f3fafe;width:150px;font-weight:bold;}
+.oneInfo h3{border-bottom:1px solid #e3e3e3;font-size:16px;height:35px;line-height:35px;font-family: "microsoft yahei";margin-bottom:20px;}
+.stamped{background:url(../images/stamp.png) no-repeat;width:84px;height:79px;position: absolute;right:-25px;top:100px;}
+.bidRecord{font-family: "microsoft yahei"}
+.bidRecord th{background:#d4efff;padding:8px 0;}
+.bidRecord td{background:#fcfcfe;padding:8px 0;text-align: center}
+.bidRecord tr:nth-child(2n+1) td{background:#f2fafd;}
+.financeProduct .elite_table  td{padding-left:0;text-align:center}
+.financeProduct .elite_table td.q_mark{padding-left:60px;text-align:left}
+/*分页*/
+.m-row, .m-page{float:left;left:50%;position:relative}
+.outerPage .m-page a, .outerPage .m-page input {
+    float: left;
+    position: relative;
+    right: 50%;
+    z-index: 2;
+}
+/*.gh_logo{background:url(../images/greenhand.png) no-repeat 0 bottom;width:74px;height:32px;position:absolute;top:0;left:20px;}*/
+.gh_logo{
+    background: url(../images/greenhand.png) no-repeat 0 bottom;
+    width: 74px;
+    height: 32px;
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}
+.bid_progress h4{background:url(../images/logo_buydetail.png) no-repeat 5px 5px;float:left;padding-left:25px;}
+.bid_progress li{float:left;margin-right:10px;}

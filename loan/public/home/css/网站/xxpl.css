@@ -1,0 +1,61 @@
+﻿@charset "utf-8";
+/*whole*/
+html{}
+body{ width: 100%; margin:0; padding: 0; font-family:"Microsoft Yahei"; background: #f6f6f6;}
+img{border:0;}
+a,p,form{text-decoration:none; margin:0px; padding:0px;}
+a:hover{text-decoration:underline;}
+ul,li{ list-style-type:none;  margin:0px; padding:0px;}
+
+/*clear float*/
+.clearfix{*zoom:1;}.clearfix:after{content:"\200B"; display:block; height:0; clear:both;overflow:hidden; visibility:hidden; }
+
+.xxplBox{width: 1000px;  background: #fff; margin:0 auto; margin-top: 50px;}
+.xxplBox img{ display: block;}
+.tabblock2{ width: 942px; margin:0 auto; margin-top: 50px; }
+.tabblockTop ul{ width: 100%;}
+.tabblockTop ul li{ float: left; line-height: 40px;} 
+.ytop { background: #f5fbfe; margin-bottom: 2px; font-size: 14px; font-weight: bold; color: #696969;} 
+.yone{ width: 118px; text-align:center; border-right: 2px solid #fff;}
+.ytwo{ width: 208px; text-align:center; border-right: 2px solid #fff;}
+.ythree{ width: 118px; text-align:center;}
+.ycenter { background: #f8f8f8; margin-bottom: 2px; font-size: 14px; color: #696969;} 
+.ycenters { background: #fbfbfb;} 
+.yones{ width: 120px; text-align:center;}
+.ytwos{ width: 210px; text-align:center;}
+.yTable{ width: 900px; margin:0 auto; font-size: 12px;}
+.yTable table{ width: 100%; background: #fff; margin-bottom: 20px;border-left: 1px solid #f8f8f8; border-top: 1px solid #f8f8f8; }
+.yTable table td{ height: 40px; border-right: 1px solid #f8f8f8; border-bottom: 1px solid #f8f8f8; }
+.bjLeft {padding-left: 12px;}
+#yck{ color: #0072ff; cursor: pointer;}
+.xxplBox .tabnav2,.xxplBox .tabblock2{display:none;cursor: pointer;}
+.xxplBox.tab .tabnav1,.xxplBox.tab .tabblock1{display:none;}
+.xxplBox .tabnav1,.xxplBox .tabblock1{display:block; cursor: pointer;}
+.xxplBox.tab .tabnav2,.xxplBox.tab .tabblock2{display:block;}
+
+
+/*数据滚屏样式*/
+.yRolling{ width: 955px; margin:0 auto; margin-top: 30px; margin-bottom: 30px;}
+.yRollingL{ width: 620px; border:1px solid #e8e9ec; height: 208px; float: left; background: #fff;}
+.yRollingTitle{ width: 125px; height: 30px; background: #ff761d; border-radius: 0 0 5px 0; line-height: 30px; text-align: center; font-size: 16px;  font-weight: bold; color: #fff;}
+.yRollingL ul{margin-top: 5px; }
+.yRollingL ul li{font-size: 12px; color: #696969; line-height: 30px; font-family:"SimSun"; text-align:left;margin-left: 20px;background: url(../images/yicon.jpg)no-repeat 5px; padding-left: 28px; margin-left: 10px;}
+.yRollingr{ width: 320px; border:1px solid #e8e9ec; height: 208px; float: right; background: #fff; position: relative;}
+.yRollingTitles{ width: 185px; height: 30px; background: #ff761d; border-radius: 0 0 5px 0; line-height: 30px; text-align: center; font-size: 16px;  font-weight: bold; color: #fff;}
+.yRollingr p{ font-size: 16px; color: #696969; width: 288px; margin:0 auto; line-height: 30px; margin-top: 27px;}
+.yRollingr img{ position: absolute; right: 20px; bottom: 10px;}
+
+
+.ui-paging-container{ width: 942px; margin:0 auto;  color:#666;font-size: 12px; margin-top: 30px; padding-bottom: 25px;}
+.ui-paging-container ul{overflow: hidden;  text-align: right;}
+.ui-paging-container ul,.ui-paging-container li{list-style: none;}
+.ui-paging-container ul li{display: inline-block;padding:0px 13px;margin-left: 5px;color:#666; line-height: 28px;}
+.ui-paging-container li.ui-pager{cursor: pointer; border:1px solid #ddd;}
+.ui-paging-container li.ui-pager:hover,.ui-paging-container li.focus{background-color: #288df0;color:#FFFFFF;}
+.ui-paging-container li.ui-paging-ellipse{border:none;}
+.ui-paging-container li.ui-paging-toolbar{ margin-left: -13px;}
+.ui-paging-container li.ui-paging-toolbar select{height:22px; border:1px solid #ddd; color: #666;}
+.ui-paging-container li.ui-paging-toolbar input{line-height: 20px; height:28px;padding:0;border:1px solid #ddd;text-align: center;width: 40px;margin:0 0 0 5px;vertical-align: middle; margin-top: -2px;}
+.ui-paging-container li.ui-paging-toolbar a{vertical-align: middle; text-decoration: none;display: inline-block;height:28px;border:1px solid #ddd;vertical-align: top;border-radius: 2px;line-height: 28px;cursor: pointer;margin-left: 5px;color: #666; width: 50px; text-align: center; margin-top: 0px;}
+.ui-paging-container li.ui-pager-disabled,.ui-paging-container li.ui-pager-disabled:hover{  height: 30px; background-color: #f6f6f6;;cursor: default;border:none;color:#ddd;}
+
