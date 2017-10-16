@@ -20,6 +20,12 @@
                     <div class="dai-l2-box">
                     	<ul class="dai-l2-con f-l">
                             <form action="loan_add" method="post" enctype="multipart/form-data">
+                                <li>
+                                    <p>贷款类型：</p>
+                                    <p><?php echo $v->type_name; ?></p>
+                                    <input type="hidden" value="<?php echo $v->type_id; ?>" name="type_id"/>
+                                    <div style="clear:both;"></div>
+                                </li>
                             <li>
                                 <p>房主姓名：</p>
                                 <input type="text" name="house_name"/>
@@ -55,11 +61,7 @@
                                 <input type="text" name="house_address"/>
                                 <div style="clear:both;"></div>
                             </li>
-                            <li>
-                                <p>房屋购买时间：</p>
-                                <input type="date" name="house_addtime"/>
-                                <div style="clear:both;"></div>
-                            </li>
+
                                 <li align="center">
                                     <input type="submit" value="提交信息" />
                                     <div style="clear:both;"></div>
