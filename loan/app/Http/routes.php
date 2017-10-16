@@ -92,3 +92,4 @@ Route::any('admin/roleAdd','admin\RoleController@roleAdd');
 Route::any('admin/adminAdd','admin\AdminController@adminAdd');
 Route::get('admin/adminList','admin\AdminController@adminList');
 Route::get('admin/adminList','admin\AdminController@adminList');
+Route::any('admin/lists','admin\FinancingController@lists');

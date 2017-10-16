@@ -57,6 +57,17 @@ $(function(){
         </li>
         <li>
             <div class="nav_m">
+                <span><a>理财管理</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="lists" target="main">列表展示</a></span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="nav_m">
                 <span><a>终端管理</a></span>
                 <i>&nbsp;</i>
             </div>
