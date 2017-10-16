@@ -68,8 +68,9 @@ class RoleController extends CommonController
 		}
 		else
 		{
-			$Resnode=DB::table('node')->where('is_del','=','1')->where('p_id','!=',0)->get();
-    		return view('admin/role/add',['data'=>$Resnode]);
+			$Resnode=DB::table('node')->where('is_del','=','1')->get();
+			$rest=$this->ParentChilds($Resnode);
+    		return view('admin/role/add',['data'=>$rest]);
 		}
     }
     //改
@@ -91,9 +92,9 @@ class RoleController extends CommonController
 		//查询权限名称
 		foreach($arr as $k=>$v)
 		{
-			$node_name=DB::select("select node_name from lz_node where node_id in(".$v['node_id'].")");
+			$node_name=DB::select("select node_name,p_id from lz_node where node_id in(".$v['node_id'].")");
 			 $node_names=json_decode(json_encode($node_name),true);
-             $name=implode(',',array_column($node_names, 'node_name'));	 
+             $name=array_column($node_names, 'node_name');	 
              $arr[$k]['node_name']=$name;
 		}
 		return $arr;

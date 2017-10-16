@@ -28,8 +28,6 @@ class loginController extends Controller{
             $session = new Session;
             $session->set("user_email",$user_email);
             $session->set("user_id",$arr->user_id);
-            $ss=$session->get("user_email");
-            $aa=$session->get("user_id");
             return redirect('home/index');
         }  
     }

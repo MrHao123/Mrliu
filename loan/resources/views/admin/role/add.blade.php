@@ -59,9 +59,19 @@ $(function(){
                     </li>
                     <li class="clearfix">
                         <span class="title">权限分配：</span>
-                        <?php foreach($data as $k=>$v):?>
-                        <input type="checkbox" value="<?=$v->node_id?>" name='node_id[]' ><?=$v->node_name?>
-                    <?php endforeach;?>
+                     
+                      <table>
+                       @foreach($data as $key=>$val)
+                       <tr>
+                            <td><input type="checkbox" name="node_id[]" value="{{$val['node_id']}}"></td>
+                            <td>{{$val['node_name']}}：</td>
+                            @foreach($val[0] as $k=>$v)
+                            <td><input type="checkbox" name="node_id[]" value="{{$v['node_id']}}"></td>
+                            <td>{{$v['node_name']}}</td>
+                            @endforeach
+                        </tr>
+                       @endforeach
+                        </table>
                     </li>
                     <li class="clearfix">
                         <span class="title">角色介绍：</span>
