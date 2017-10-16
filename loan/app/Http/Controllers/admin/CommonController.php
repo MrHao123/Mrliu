@@ -20,7 +20,7 @@ class CommonController extends Controller
 
 		//权限控制
 		$admin_id=1;
-		$admin_name='admins';
+		$admin_name='admin';
 		//查询管理员角色
 		$role=DB::table('admin_role')->where('is_del','=','1')->where('admin_id','=',$admin_id)->get();
 	
@@ -40,23 +40,29 @@ class CommonController extends Controller
 		$controller=substr(strrchr($class,'\\'),1);
 		$controller=substr($controller,0,-10);
 		$urls=$controller.'@'.$action;
-		if($urls=='Index@index' || $urls=='Index@top'|| $urls=='Index@left' || $urls=='Index@show')
+		if($admin_name!='admin')
 		{
-			return true;
+			if($urls=='Index@index' || $urls=='Index@top'|| $urls=='Index@left' || $urls=='Index@show')
+					{
+						return true;
+					}else{
+						if(in_array($urls,$node_urls))
+						{
+							return true;
+						}
+						else
+						{
+							echo '您没有权限访问,3秒后跳转';
+							header('refresh:3;url=show');
+							die;
+						}
+					}
 		}
 		else
 		{
-			if(in_array($urls,$node_urls))
-			{
-				return true;
-			}
-			else
-			{
-				echo '您没有权限访问,3秒后跳转';
-				header('refresh:3;url=show');
-				die;
-			}
+			return true;
 		}
+		
 					
 			
 	}

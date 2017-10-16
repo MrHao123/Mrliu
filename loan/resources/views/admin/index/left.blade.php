@@ -53,6 +53,7 @@ $(function(){
                  <li>
                     <span><a href="nodeList" target="main">权限列表</a></span>
                 </li>
+               
             </ul>
         </li>
         <li>
@@ -72,6 +73,25 @@ $(function(){
                 </li>
             </ul>
         </li>
+       <!--  广告位 -->
+        <li>
+            <div class="nav_m">
+                <span><a>广告位</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="advertisingadd" target="main">发布新广告</a></span>
+                </li>
+                <li>
+                    <span><a href="advertisinglist" target="main">广告列表</a></span>
+                </li>
+                <li>
+                    <span><a href="advertisinghistory" target="main">历史广告</a></span>
+                </li>
+            </ul>
+        </li>
+        
         <li>
             <div class="nav_m">
                 <span><a>流服务器</a></span>

@@ -1,5 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -33,7 +32,7 @@ $(function(){
         <!--会议列表-->
         <div class="hy_list" >
             <div class="box_t">
-                <span class="name">管理员添加</span>
+                <span class="name">广告位添加</span>
                 <!--当前位置-->
                 <div class="position">
                     <a href=""><img src="{{asset('admin/images/icon5.png')}}" alt=""/></a>
@@ -46,48 +45,60 @@ $(function(){
                 <!--当前位置-->
             </div>
             <div class="space_hx">&nbsp;</div>
+            <div id="overlay">
             <!--新建会议-->
-            <form id="form">
+        
+            <form id="form" action="advertisingadd" method="post" enctype="multipart/form-data">
             <div class="xjhy">
-            <!--高级配置-->
+            <input type="hidden" name='_token' value="{{csrf_token()}}">
                 <ul class="hypz gjpz clearfix" style="height: 300px">
                     <li class="clearfix">
-                        <span class="title">管理员名称：</span>
+                        <span class="title">广告名称：</span>
                         <div class="li_r">
-                            <input class="chang" name="admin_name" type="text">
-                            <i>*</i>
+                            <input class="chang" name="advertising_name" type="text">
+                            
+                        </div>
+                    </li>
+                     <li class="clearfix">
+                        <span class="title"></span>
+                        <div class="li_r">
+                           
+                            
                         </div>
                     </li>
                     <li class="clearfix">
-                        <span class="title">管理员密码：</span>
+                        <span class="title">广告图片：</span>
                         <div class="li_r">
-                            <input class="chang" name="admin_pwd" type="text">
-                            <i>*</i>
+                            <input class="chang" name="advertising_img" type="file">
+                            
+                        </div>
+                    </li>
+                   <li class="clearfix">
+                        <span class="title"></span>
+                        <div class="li_r">
+                           
+                            
                         </div>
                     </li>
                     <li class="clearfix">
-                        <span class="title">角色分配：</span>
-                        <?php foreach($data as $k=>$v):?>
-                        <input type="checkbox" value="<?=$v['role_id']?>" name='role_id[]' title='<?=$v['node_name']?>' ><?=$v['role_name']?>
-                    <?php endforeach;?>
-                    </li>
-                    <li class="clearfix">
-                        <span class="title">管理员介绍：</span>
+                        <span class="title">广告简介：</span>
                         <div class="li_r">
-                            <textarea name="admin_desc" cols="60" rows="8"></textarea>
+                            <textarea name="advertising_desc" cols="60" rows="8"></textarea>
                         </div>
                     </li>
                
                 <li>
                    <li class="tj_btn" style="margin-top: 100px;">
-                        <a href="javascript:;" class="back">返回</a>
-                        <a href="javascript:;" class="sub">保存</a>
+                        <a href="javascript:;"><input type="reset" value="取消" ></a>
+                        <a href="javascript:;"><input type="submit" value="添加" ></a>
+                        
                     </li>
                 </li>
                 </ul>
             <!--高级配置-->
             </div>
             </form>
+            </div>
             <!--新建会议-->
         </div>
         <!--会议列表-->
@@ -95,30 +106,4 @@ $(function(){
 </div>
 </body>
 </html>
-<script>
-$(function(){
-    //表单提交
-    $(".sub").click(function(){
-         $.ajax({
-             cache: true,
-             type: "POST",
-             url:"adminAdd",
-             data:$('#form').serialize(),// 你的formid
-             async: false,
-             dataType:'json',
-             success:function(data)
-             {
-                if(data.error==1)
-                {
-                    alert(data.msg);
-                    location.href='adminList';
-                }
-                else
-                {
-                    alert(data.msg)
-                }
-             }
-         });
-    })
-})
-</script>
+

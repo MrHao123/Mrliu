@@ -1,5 +1,4 @@
 <html>
-<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -30,7 +29,7 @@ $(function(){
 		<!--会议列表-->
         <div class="hy_list">
         	<div class="box_t">
-            	<span class="name">管理员列表</span>
+            	<span class="name">过期广告</span>
                 <!--当前位置-->
                 <div class="position">
                 	<a href=""><img src="{{asset('admin/images/icon5.png')}}" alt=""/></a>
@@ -44,37 +43,37 @@ $(function(){
             </div>
             <div class="space_hx">&nbsp;</div>
             <!--列表-->
-            <form action="" method="post">
+            <?php if($data!=''){ ?>
+             <form action="" method="post">
             <table cellpadding="0" cellspacing="0" class="list_hy">
               <tr>
-                <th scope="col" ><div>管理员编号<a href="" class="up">&nbsp;</a><a href="" class="down">&nbsp;</a></div></th>
-                <th scope="col">管理员名称</th>
-                <th scope="col">管理员属性</th>
-                <th scope="col">添加时间</th>
-                <th scope="col">角色介绍</th>
-                <th scope="col">操作</th>
-              </tr>
-              <?php foreach($data as $k=>$v) :?>
-              <tr>
-                <td><?=$v['admin_id'];?></td>
-                <td><?=$v['admin_name'];?></td>
-                <td><?=$v['role_name'];?></td>
-                <td><?=$v['addtime'];?></td>
-                <td><?=$v['admin_desc'];?></td>
-                <td>
-                    <a href="">删除</a>--<a href="">编辑</a>
-                </td>
-              </tr>
-              <?php endforeach;?>
+                <th scope="col" >过期广告名称</th>
+                <th scope="col">过期广告图片</th>
+                <th scope="col">过期广告url</th>
+                <th scope="col">过期广告简介</th>
+             <?php foreach ($data as $val) : ?>
+                <tr>
+                <th><?php echo $val->advertising_name; ?></th>
+                <th><?php echo $val->advertising_img; ?></th>
+                <th><?php echo $val->advertising_url; ?></th>
+                <th><?php echo $val->advertising_desc; ?></th>
+                </tr>
+                <?php endforeach ?>
             </table>
             <!--列表-->
             <!--右边底部-->
             <div class="r_foot">
-            	<div class="r_foot_m">
+                <div class="r_foot_m">
                 <a href="" class="btn">刷新</a>
                 </div>
             </div>
             </form>
+            <?php }?>
+            <br><br><br><br><br>
+            <h1 style="color:red;font-size:36px;" >对不起网站当前尚未有过期广告。。。。。</h1>
+           
+      
+            
             <!--右边底部-->
         </div>
         <!--会议列表-->
