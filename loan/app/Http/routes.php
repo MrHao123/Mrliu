@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::match(['get','post'],'/', function () {
     return view('welcome');
 });
 
@@ -91,3 +94,6 @@ Route::any('admin/roleAdd','admin\RoleController@roleAdd');
 //管理员
 Route::any('admin/adminAdd','admin\AdminController@adminAdd');
 Route::get('admin/adminList','admin\AdminController@adminList');
+//房贷审核--控制器loan
+Route::get('admin/pending','admin\LoanController@pending');
+Route::get('admin/status','admin\LoanController@status');

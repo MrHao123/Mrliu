@@ -20,7 +20,7 @@ class CommonController extends Controller
 
 		//权限控制
 		$admin_id=1;
-		$admin_name='admins';
+		$admin_name='admin';
 		//查询管理员角色
 		$role=DB::table('admin_role')->where('is_del','=','1')->where('admin_id','=',$admin_id)->get();
 	

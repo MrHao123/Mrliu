@@ -55,6 +55,33 @@ $(function(){
                 </li>
             </ul>
         </li>
+
+
+
+         <li>
+            <div class="nav_m">
+                <span><a>贷款审核管理</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="pending" target="main">房贷审核列表</a></span>
+                </li>
+                <li>
+                    <span><a href="fwqkz.html" target="main">车贷审核列表</a></span>
+                </li>
+            </ul>
+        </li>
+
+
+
+
+
+
+
+
+
+
         <li>
             <div class="nav_m">
                 <span><a>终端管理</a></span>
