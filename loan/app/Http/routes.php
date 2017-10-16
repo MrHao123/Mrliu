@@ -75,5 +75,19 @@ Route::get('home/company_licai_adddo','home\LicaiController@company_licai_adddo'
 
 
 //后台路由
-Route::any('admin/index','admin\IndexController@index');
+Route::get('admin/index','admin\IndexController@index');
+Route::get('admin/top','admin\IndexController@top');
+Route::get('admin/left','admin\IndexController@left');
+Route::get('admin/show','admin\IndexController@show');
+//登陆
 Route::any('admin/login','admin\LoginController@login');
+
+//权限
+Route::get('admin/nodeList','admin\NodeController@nodeList');
+Route::any('admin/nodeAdd','admin\NodeController@nodeAdd');
+//角色
+Route::get('admin/roleList','admin\RoleController@roleList');
+Route::any('admin/roleAdd','admin\RoleController@roleAdd');
+//管理员
+Route::any('admin/adminAdd','admin\AdminController@adminAdd');
+Route::get('admin/adminList','admin\AdminController@adminList');
