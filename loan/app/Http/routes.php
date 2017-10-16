@@ -39,9 +39,7 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'web'], functio
     Route::any('register','RegisterController@register');
     Route::any('register_add','RegisterController@register_add');
     Route::any('mail','RegisterController@mail');
-    //Route::any('verify','loginController@verify');
     Route::any('loan','LoanController@loan');
-    //Route::get('/captcha/{tmp}','LoginController@captcha');
 });
 
 
@@ -91,4 +89,4 @@ Route::any('admin/roleAdd','admin\RoleController@roleAdd');
 //管理员
 Route::any('admin/adminAdd','admin\AdminController@adminAdd');
 Route::get('admin/adminList','admin\AdminController@adminList');
-Route::get('admin/adminList','admin\AdminController@adminList');
+
