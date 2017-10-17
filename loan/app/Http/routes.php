@@ -70,11 +70,15 @@ Route::any('home/loan_adddo','home\VipController@loan_adddo');
 //
 Route::any('home/customer','home\CustomerController@customer');
 //理财
-Route::any('home/licai','home\LicaiController@licai');
-Route::any('home/company_licai','home\LicaiController@company_licai');
-Route::any('home/company_licai_add','home\LicaiController@company_licai_add');
-Route::post('home/valuetion','home\LicaiController@valuetion');
-Route::get('home/company_licai_adddo','home\LicaiController@company_licai_adddo');
+Route::any('licai/show','home\LicaiController@licai');
+Route::any('licai/company_licai','home\LicaiController@company_licai');
+Route::any('licai/company_licai_add','home\LicaiController@company_licai_add');
+Route::post('licai/valuetion','home\LicaiController@valuetion');
+Route::get('licai/company_licai_adddo','home\LicaiController@company_licai_adddo');
+Route::any('licai/personal','home\LicaiController@personal');
+Route::any('licai/personal_show','home\LicaiController@personal_show');
+Route::post('licai/personal_valuetion','home\LicaiController@personal_valuetion');
+Route::get('licai/personal_add','home\LicaiController@personal_add');
 
 
 

@@ -19,9 +19,13 @@ class loginController extends Controller{
 
         //接值
         $input = $request->input();
+        
         $user_email = $input['user_email'];
+//print_r($input);die;
+        // echo $user_email;die;
         $user_pwd = Md5($input['user_pwd']);
         $arr = DB::table('user')->where('user_email',$user_email)->first();
+        //print_r($arr);die;
         //密码
         if($arr->user_pwd == $user_pwd)
         {
