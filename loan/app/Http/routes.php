@@ -76,6 +76,7 @@ Route::get('home/company_licai_adddo','home\LicaiController@company_licai_adddo'
 
 
 
+
 //后台路由
 Route::get('admin/index','admin\IndexController@index');
 Route::get('admin/top','admin\IndexController@top');
@@ -92,9 +93,8 @@ Route::get('admin/roleList','admin\RoleController@roleList');
 Route::any('admin/roleAdd','admin\RoleController@roleAdd');
 //管理员
 Route::any('admin/adminAdd','admin\AdminController@adminAdd');
-
 Route::get('admin/adminList','admin\AdminController@adminList');
-
+Route::any('admin/lists ',' admin\FinancingController@lists ');
 
 //房贷审核--控制器loan
 Route::get('admin/pending','admin\LoanController@pending');
