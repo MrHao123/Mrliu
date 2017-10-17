@@ -88,5 +88,7 @@ Route::get('admin/roleList','admin\RoleController@roleList');
 Route::any('admin/roleAdd','admin\RoleController@roleAdd');
 //管理员
 Route::any('admin/adminAdd','admin\AdminController@adminAdd');
+
 Route::get('admin/adminList','admin\AdminController@adminList');
+
 
