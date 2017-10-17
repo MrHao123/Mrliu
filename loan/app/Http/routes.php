@@ -94,7 +94,13 @@ Route::any('admin/adminAdd','admin\AdminController@adminAdd');
 
 Route::get('admin/adminList','admin\AdminController@adminList');
 
+
 //房贷审核--控制器loan
 Route::get('admin/pending','admin\LoanController@pending');
 Route::get('admin/status','admin\LoanController@status');
+
+//广告位
+Route::any('admin/advertisingadd','admin\AdvertisingController@advertisingadd');
+Route::get('admin/advertisinglist','admin\AdvertisingController@advertisinglist');
+Route::get('admin/advertisinghistory','admin\AdvertisingController@advertisinghistory');
 
