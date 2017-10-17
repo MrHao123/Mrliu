@@ -28,17 +28,21 @@
                                 </li>
                             <li>
                                 <p>房主姓名：</p>
-                                <input type="text" name="house_name"/>
+                                <input type="text" name="house_name" id="name" class="reg_name"/>
+                                <span class="tip user_hint"></span>
                                 <div style="clear:both;"></div>
+
                             </li>
                                 <li>
                                     <p>亲属姓名：</p>
-                                    <input type="text" name="house_name_relatives"/>
+                                    <input type="text" name="house_name_relatives"  class="reg_name2"/>
+                                    <span class="tip user_hint2"></span>
                                     <div style="clear:both;"></div>
                                 </li>
                                 <li>
                                     <p>亲属关系：</p>
-                                    <input type="text" name="house_relationship"/>
+                                    <input type="text" name="house_relationship" class="guanxi"/>
+                                    <span class="tip user_hint3"></span>
                                     <div style="clear:both;"></div>
                                 </li>
                                 <li>
@@ -76,7 +80,7 @@
                 </div>
 
             </div>
-            <div class="dai-xx-right f-l">
+            <div class="dai-xx-right f-l" >
             	<h3>特别声明：</h3>
                 <p>您的信息将只作为产品推荐使用，不会以任何形式泄露给其他人员或机构。</p>
                 <p>您的信息将只作为产品推荐使用，不会以任何形式泄露给其他人员或机构。</p>
@@ -84,8 +88,33 @@
             <div style="clear:both;"></div>
         </div>
     </div>
-    
-
+<script>
+    //
+    //验证姓名
+$('.reg_name').blur(function(){
+if ((/^[\u4e00-\u9fa5]{2,4}$/).test($(".reg_name").val())){
+$('.user_hint').html("✔").css("color","green");
+}else {
+$('.user_hint').html("您输入的有误，请重新输入").css("color","red");
+}
+});
+    //验证亲属姓名
+    $('.reg_name2').blur(function(){
+        if ((/^[\u4e00-\u9fa5]{2,4}$/).test($(".reg_name2").val())){
+            $('.user_hint2').html("✔").css("color","green");
+        }else {
+            $('.user_hint2').html("您输入的有误，请重新输入").css("color","red");
+        }
+    });
+    //验证亲属关系
+    $('.guanxi').blur(function(){
+        if ((/^[\u4e00-\u9fa5]{2,10}$/).test($(".guanxi").val())){
+            $('.user_hint3').html("✔").css("color","green");
+        }else {
+            $('.user_hint3').html("您输入的有误，请重新输入").css("color","red");
+        }
+    });
+</script>
 
 </body>
 </html>

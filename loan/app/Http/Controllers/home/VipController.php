@@ -78,9 +78,9 @@ class VipController extends Controller{
         $plan = $_POST['plan'];
         $time = date('Y-m-d H:i:s');
         $data = DB::table('loan')->insert(['type_id'=>$type,'user_id'=>$zz,'add_time'=>$time,'house_id'=>$house,'edu'=>$edu,'loan_time'=>$loan_time,'loan_rate'=>$loan_rate,'plan'=>$plan]);
-            if($data){
-                return view('home/loan/loan_okto');
-            }
+        if($data){
+            return view('home/loan/loan_okto');
+        }
     }
 
 
