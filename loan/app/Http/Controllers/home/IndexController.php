@@ -23,7 +23,7 @@ class IndexController extends Controller{
     public function index()
     {
     	$data=DB::table('advertising')->where('advertising_yes_no','=','1')->get();
-// print_r($data);die();     
+
    if($data) {
              return view('home/index/index', ['data' => $data]);
         }else{

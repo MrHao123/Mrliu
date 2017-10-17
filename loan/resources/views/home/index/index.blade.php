@@ -22,7 +22,7 @@
                 80%,100% {       margin-left: -4608px;    }
 
             }
-         </style>
+         </style>·
     <div id="frame" >
 
         <div id="photos" class="play">
@@ -39,11 +39,11 @@
             </ul>
         </div>
     </div>
-    {{--<a href="#"><img src="{{asset('home/images/daikuan-01.jpg')}}" /></a>--}}
 
     <div class="cd-bn-box">
     </div>
 </div>
+
 
 
 
@@ -148,7 +148,23 @@
             <div class="dai-con-box">
                 <div class="dai-box-ifon3">
                     <div class="dai3-kuai"  style="height:500px">
-                        <a href="#"><img src="{{asset('home/images/fed.png')}}" style="width: 785px;height: 500px"/></a>
+
+   <table>
+        <tr>
+            <td>图片名称</td>
+            <td>图片路径</td>
+        </tr>
+
+         <?php foreach ($data as $val) : ?>
+        <tr>
+            <td><?php echo $val->advertising_img; ?> </td>
+            <td><img width="100px;" height="40px;"  src="<?php echo $val->advertising_url;?>" ></td>
+        </tr>
+        
+    <?php endforeach ?>
+</table>
+
+                        <!-- <a href="#"><img src="{{asset('home/images/fed.png')}}" style="width: 785px;height: 500px"/></a> -->
                         <div style="clear:both;"></div>
                     </div>
                 </div>

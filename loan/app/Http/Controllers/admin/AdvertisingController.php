@@ -15,18 +15,13 @@ class AdvertisingController extends CommonController{
     public function advertisingadd()
     {
         if($_POST){
-                $advertising_name=$_POST['advertising_name'];
+                    $advertising_name=$_POST['advertising_name'];
                  //图片上传
-                $file = $_FILES;
-                $advertising_img = $file['advertising_img']['name'];
-                $advertising_url = "Upload/".$advertising_img;
-                move_uploaded_file($file['advertising_img']['tmp_name'],$advertising_url);
-
-                    // $advertising_img=$_FILES['advertising_img']['name'];
-                    // $advertising_img = "Upload/".$advertising_img;
-                    // move_uploaded_file($advertising_img,$advertising_url);
-
-
+                    $file = $_FILES;
+                    $advertising_img = $file['advertising_img']['name'];
+                    // $advertising_url = "admin/Upload/".$advertising_img;    //图片保存位置
+                    $advertising_url ="Upload/".$advertising_img;         //图片入库url
+                    move_uploaded_file($file['advertising_img']['tmp_name'],$advertising_url);
 
                     $advertising_desc=$_POST['advertising_desc'];
                     $add=time();
@@ -63,8 +58,7 @@ class AdvertisingController extends CommonController{
     {
 
         $data=DB::table('advertising')->where('advertising_yes_no','=','1')->get();
-
-// print_r($data);die();     
+       
    if($data) {
             return view('admin/advertising/advertisinglist', ['data' => $data]);
         }else{

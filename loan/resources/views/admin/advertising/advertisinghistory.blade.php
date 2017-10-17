@@ -54,7 +54,7 @@ $(function(){
              <?php foreach ($data as $val) : ?>
                 <tr>
                 <th><?php echo $val->advertising_name; ?></th>
-                <th><?php echo $val->advertising_img; ?></th>
+                <th><img width="100px;" height="40px;" src="<?php echo $val->advertising_url;?>" /></th>
                 <th><?php echo $val->advertising_url; ?></th>
                 <th><?php echo $val->advertising_desc; ?></th>
                 </tr>

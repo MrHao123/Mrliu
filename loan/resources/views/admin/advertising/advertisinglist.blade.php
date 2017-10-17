@@ -58,7 +58,7 @@ $(function(){
                 <tr>
                 <th><?php echo $val->advertising_name; ?></th>
                 <th><?php echo $val->advertising_img; ?></th>
-                <th><?php echo $val->advertising_url; ?></th>
+                <th><img width="100px;" height="40px;" src="{{$val->advertising_url}}"/></th>
                 <th><?php echo $val->advertising_addtime; ?></th>
                 <th><?php echo $val->advertising_endtime; ?></th>
                 <th><?php echo $val->advertising_desc; ?></th>
