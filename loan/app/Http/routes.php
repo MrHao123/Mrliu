@@ -49,6 +49,7 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'web'], functio
 
 //前台首页
 Route::any('home/index','home\IndexController@index');
+// Route::get('index/{id}','IndexController@index')->where('id','admin');
 
 //注册
 Route::any('home/register','home\RegisterController@register');

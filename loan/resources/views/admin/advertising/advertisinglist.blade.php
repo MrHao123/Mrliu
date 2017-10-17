@@ -47,8 +47,8 @@ $(function(){
             <table cellpadding="0" cellspacing="0" class="list_hy">
               <tr>
                 <th scope="col" >广告名称</th>
+                <th scope="col">图片名称</th>
                 <th scope="col">广告图片</th>
-                <th scope="col">广告url</th>
                 <th scope="col">广告过期时间</th>
                 <th scope="col">广告过期时间</th>
                 <th scope="col">广告简介</th>

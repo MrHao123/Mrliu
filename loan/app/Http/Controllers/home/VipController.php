@@ -42,8 +42,8 @@ class VipController extends Controller{
     //添加个人信息
     public function information( )
     {
-        print_r($_POST);exit;
-        $user_id=1;
+        $session = new Session;
+        $user_id=$session->get("user_id");
         $info_name=$_POST['info_name'];
         $info_card=$_POST['info_card'];
         $info_age=$_POST['info_age'];
@@ -83,6 +83,27 @@ class VipController extends Controller{
             }
     }
 
+
+    //充值 recharge
+
+    public function recharge()
+        {
+            //实例化session
+            print_r($_POST);die;
+            
+            // $session = new Session;
+            // $user_id=$session->get("user_id");
+            // //接值
+            // $cz_card = $_POST['cz_card'];
+            // // $cz_type = $_POST['cz_type'];
+            // $cz_pwd = $_POST['cz_pwd'];
+            // $cz_addtime = date('Y-m-d H:i:s');
+            // $is_del=1;
+            // $data = DB::table('recharge')->insert(['cz_card'=>$cz_card,'cz_pwd'=>$cz_pwd,'user_id'=>$user_id,'cz_addtime'=>$cz_addtime,'is_del'=>$is_del]);
+            //     if($data){
+            //         return view('home/vip/recharge');
+            //     }
+        }
 
 }
 

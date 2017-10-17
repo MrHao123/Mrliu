@@ -188,6 +188,7 @@
         <!-- 2 -->
         <div class="hy-left-info2" id='two' style="display: none">
             <h3 class="hy-left-title1">我的借款</h3>
+            <div class="hy-if3-k1">
             <?php foreach($data as $k=>$v) :?>
             <?php if($v->house_state == 0){ ?>
 
@@ -305,15 +306,52 @@
         </div>
     </div>
     <!-- 4 -->
+    <style>
+                #chongzhi {
+                    background: #000;
+                    filter: alpha(opacity=50); /* IE的透明度 */
+                    position: fixed;
+                    top:0px;
+                }
+                #cz{
+                    position: fixed;
+                    top: 20%;
+                    left: 30%;
+                    background-color: #FCF6EA;
+                    width: 580px;
+                    height: 350px;
+                }
+                #close{
+                    position: fixed;
+                    top: 165px;
+                    left: 1000px;
+                }
+            </style>
     <div class="hy-left-info3" id='five' style="display: none">
         <h3 class="hy-left-title1">我的账户</h3>
-        <div class="hy-if3-k1">
-            <center>
+        <div class="hy-if3-k1" id="chongzhi">
+          <!--   <center>
                 <p class="current">我的余额:(显示当前用户下的余额）</p><br><br><br>
                 <p><input type="button" value="我要充值" id="recharge" style="background-color:#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="button" value="我要提现" id="withdraw" style="background-color: #0000ff"></p>
+            </center> -->
+
+
+
+        <form  id="cz" >
+            <table>
+            <center>
+
+                <img src="{{asset('home/images/huiyuan-12.gif')}}" id="close" title="关闭">
+                <p><input type="text" name="cz_card" id="user"  placeholder="卡号"></p>
+                <!-- <p><input type="text" name="cz_type" id="pwd" placeholder="银行"></p>  -->
+                <p><input type="text" name="cz_pwd" id="pwd" placeholder="支付密码"></p>
+                <p><input type="button" id="submit"  class="czsub" value="提交" style="background-color:#11CBBE"></p>
             </center>
-        </div>
+            </table>
+        </form>
+
+
     </div>
 </div>
 <div style="clear:both;"></div>
@@ -345,11 +383,14 @@
     })
 </script>
 <script>
+/*个人信息*/
+
     /* 当前页面高度 */
     var height=document.body.scrollHeight;
     /* 当前页面宽度 */
     var width=document.body.scrollWidth;
     /* 当前页面宽度 */
+
     $("#overlay").height(height);
     $("#overlay").width(width);
     // fadeTo第一个参数为速度，第二个为透明度
@@ -360,6 +401,7 @@
         $('#overlay').fadeOut(200)
     })
     $('.subs').click(function(){
+        
 //        var name=document.getElementsByClassName(user_name).value();
         $.ajax({
             cache: true,
@@ -388,7 +430,7 @@
         $('#overlay').fadeOut(200)
     })
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/flow.js"></script>
 <script type="text/javascript">
     var myAlert = document.getElementById("alert");
@@ -403,9 +445,64 @@
         myAlert.style.display = "none";
         myMask.style.display = "none";
     })
+
+
+
+
+
+
 </script>
 
+<script>
+// 我要充值
+ /* 当前页面高度 */
+    var height=document.body.scrollHeight;
+    /* 当前页面宽度 */
+    var width=document.body.scrollWidth;
+    /* 当前页面宽度 */
+    $("#chongzhi").height(height);
+    $("#chongzhi").width(width);
+    // fadeTo第一个参数为速度，第二个为透明度
+    // 多重方式控制透明度，保证兼容性，但也带来修改麻烦的问题
+    $("#chongzhi").fadeTo(200,0.9);
+    //关闭后隐藏
+    $('#close').click(function(){
+        $('#chongzhi').fadeOut(200)
+    })
 
+    $('.czsub').click(function() {
+//        alert(111);
+//        die;
+
+////        var name=document.getElementsByClassName(user_name).value();
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url:"recharge",
+            data:$('#cz').serialize(),// 你的formid
+            async: false,
+//            dataType:'json',
+            error: function(request) {
+                alert("数据.....500");
+            },
+            success: function(data) {
+                if(data){
+                    alert(data);
+                }
+                // else {
+                //     alert("失败");
+                 }
+//
+//
+////             }
+        });
+
+
+
+
+    //     $('#chongzhi').fadeOut(200)
+     })
+</script>
 </body>
 </html>
 @endsection

@@ -68,10 +68,10 @@ $(function(){
                 </div>
             </div>
             </form>
-            <?php }?>
+            <?php }else{?>
             <br><br><br><br><br>
             <h1 style="color:red;font-size:36px;" >对不起网站当前尚未有过期广告。。。。。</h1>
-           
+           <?php } ?>
       
             
             <!--右边底部-->
