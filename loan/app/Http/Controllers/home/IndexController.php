@@ -15,23 +15,14 @@ Time: 15:30
 以质效并进为荣   以单取其一为耻
 */
 namespace App\Http\Controllers\Home;
-use DB;
+
 use App\Http\Controllers\Controller;
 
 class IndexController extends Controller{
     //渲染首页
     public function index()
     {
-    	$data=DB::table('advertising')->where('advertising_yes_no','=','1')->get();
-// print_r($data);die();     
-   if($data) {
-             return view('home/index/index', ['data' => $data]);
-        }else{
-             return view('home/index/index');
-        }
-       
+        return view('home/index/index');
     }
-       
-  
 
 }

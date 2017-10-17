@@ -1,6 +1,5 @@
 @extends('header')
 @section('content')
-<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -27,14 +26,8 @@
 
 </script>
 
-
-
-
 </head>
-<body class="bg">
-
-
-
+<body class="bg" >
 
 <link href="{{asset('home/css/网站/minical.css')}}" rel="stylesheet">
 <script type="text/javascript">
@@ -96,7 +89,7 @@ base_url = '';
    		<div class="elite_title clearfix">
 			
       		<div class="elite_title_left l">富二贷>>网站理财</div>
-			<a href="/finance/list/1"><div class="elite_title_right r">返回</div></a>
+			<a href="company_licai"><div class="elite_title_right r">返回</div></a>
 		</div>
 		<div class="elite_wrap clearfix">
         <div class="elite_left l">
@@ -123,7 +116,8 @@ base_url = '';
                 <span class="orange" id="restNum">
 				<?php if(!empty($userinfo)){ echo $userinfo['balance']."</span>元 剩余可出借金额";}else{ echo '请先<a href="javascript:void(0)" onclick="login()">登录</a>，显示余额';}?>
 			</p>
-        
+
+            <p><a href="#"  style="color: red">充值</a> </p>
             <p><input type="text" name="money" id="money" style="width:262px;height:30px" placeholder="请输入要理财的金额"></p>
             <p>利息：<span id="interest">0.00</span>元</p>
             <p>预计收入：<span id="expect">0.00</span>元</p>
@@ -136,7 +130,7 @@ base_url = '';
        	
        </div>	
 	<!-- 用户余额 -->
-	<input type="hidden" value="<?php if(!empty($userinfo)){ echo $userinfo['balance'];}else{ echo 0;} ?>" id="ooo">
+	<input type="hidden" value="<? echo $userinfo['balance']?>" id="ooo">
      
 
 </body>
@@ -146,7 +140,7 @@ base_url = '';
 	function login(){
 		window.location.href="{{url('index/index')}}"
 	}
-
+   
 
     //预估值
     $("#money").keyup(function(){
@@ -161,8 +155,8 @@ base_url = '';
             success:function(msg){
                 // alert(msg);
                 str=parseFloat(msg)+parseFloat(money);
-                $("#expect").html(str);
-                $("#interest").html(msg);
+                $("#expect").html(str)
+                $("#interest").html(msg)
             }
         })
     })
@@ -185,7 +179,7 @@ base_url = '';
              alert("最低100元");
                 return false;
         }else{
-            window.location.href="company_licai_adddo?money="+money+"&mouth="+mouth+"&expect_money="+expect_money+"&rate="+rate+"&add_rate="+add_rate;
+            window.location.href="company_licai_adddo?money="+money+"&mouth="+mouth+"&expect_money="+expect_money
         }
            
 

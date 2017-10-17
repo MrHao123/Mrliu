@@ -25,16 +25,11 @@ class VipController extends Controller{
     //渲染首页
     public function vip()
     {
-        $session = new Session;
-        $aa=$session->get("user_id");
-        $select=DB::table('info')->where('user_id','=','1')->get();
-        $data = DB::table('houseloan')->where('user_id',$aa)->get();
-        $term = DB::table('loanterm')->get();
-        $rate = DB::table('year_rate')->get();
-        $type = DB::table('loantype')->get();
-
+        $session=new Session;
+        $user_id=1;
+        $select=DB::table('lz_info')->where('user_id','=','1')->get();
         if($select) {
-            return view('home/vip/vip', ['select' => $select,'data' => $data,'term'=>$term,'rate'=>$rate,'type'=>$type]);
+            return view('home/vip/vip', ['select' => $select]);
         }else{
             return view('home/vip/vip', ['select' => 1]);
         }
@@ -55,7 +50,7 @@ class VipController extends Controller{
         $info_company=$_POST['info_company'];
         $info_money=$_POST['info_money'];
         $is_del=1;
-        $data= DB::table('info')->insert(['user_id'=>$user_id, 'info_name'=>$info_name,'info_card'=>$info_card,'info_age'=>$info_age,'info_sex'=>$info_sex,'info_tel'=>$info_tel,'info_email'=>$info_email,'info_address'=>$info_address, 'info_newaddress'=>$info_newaddress, 'info_company'=>$info_company,'info_money'=>$info_money,'is_del'=>$is_del]);
+        $data= DB::table('lz_info')->insert(['user_id'=>$user_id, 'info_name'=>$info_name,'info_card'=>$info_card,'info_age'=>$info_age,'info_sex'=>$info_sex,'info_tel'=>$info_tel,'info_email'=>$info_email,'info_address'=>$info_address, 'info_newaddress'=>$info_newaddress, 'info_company'=>$info_company,'info_money'=>$info_money,'is_del'=>$is_del]);
         if($data){
             echo 1;
         }else{
@@ -63,38 +58,26 @@ class VipController extends Controller{
         }
         return view('home/vip/vip');
     }
-    //贷款信息添加
-    public function loan_adddo()
+
+    //用户申请状态
+    public function loan_show()
     {
-        //实例化session
+
         $session = new Session;
-        $zz=$session->get("user_id");
-        //接值
-        $type = $_POST['type_id'];
-        $house = $_POST['house_id'];
-        $edu = $_POST['edu'];
-        $loan_time = $_POST['loan_time'];
-        $loan_rate = $_POST['loan_rate'];
-        $plan = $_POST['plan'];
-        $time = date('Y-m-d H:i:s');
-        $data = DB::table('loan')->insert(['type_id'=>$type,'user_id'=>$zz,'add_time'=>$time,'house_id'=>$house,'edu'=>$edu,'loan_time'=>$loan_time,'loan_rate'=>$loan_rate,'plan'=>$plan]);
-            if($data){
-                return view('home/loan/loan_okto');
-            }
+        $aa=$session->get("user_id");
+        $data = DB::table('lz_houseloan')->where('user_id',$aa)->lists('house_state');
+        return view('home/vip/vip',['data'=>$data]);
+
+
+
+        $session=new Session;
+        $user_id=1;
+        $select=DB::table('lz_info')->where('user_id','=','1')->get();
+        if($select) {
+            return view('home/vip/vip', ['select' => $select]);
+        }else{
+            return view('home/vip/vip', ['select' => 1]);
+        }
     }
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

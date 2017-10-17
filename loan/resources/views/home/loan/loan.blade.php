@@ -70,10 +70,17 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="loan_mation?id=<?php echo $v->type_id; ?>" id="login"> <div class="btn-reg-box1" id="apply_invest1"><div class="btn-reg pr40 pl40">立 即 申 请</div></div> </a>
+                    <a href="loan_mation?id=<?php echo $v->type_id; ?>"> <div class="btn-reg-box1" id="apply_invest1"><div class="btn-reg pr40 pl40">立 即 申 请</div></div> </a>
                 </div>
             </div>
+
+
+
+
+
             <?php endforeach ?>
+
+
 
 
             <div class="process-title2 mt45"><span>借款流程</span></div>
@@ -97,7 +104,6 @@
                         <div class="process-invest-pic process-invest-iocn3"></div>
                         <div class="process-invest-txt">域名授信</div>
                     </li>
-                    <form action="" enctype="multipart/form-data"></form>
                     <li>
                         <div class="triangle-right"></div>
                     </li>
@@ -158,7 +164,6 @@
                         <p class="borrow-info-txt-xx2">如果借款人未在规定的时间还本付息，平台将加收罚金；借款逾期七天后，平台将对借款人的抵质押物进行依法处理用以清偿债务。如果逾期还款，简贷平台有权根据具体情况将用户列入不良信用客户，强烈呼吁借款人尽量避免逾期还款，一旦发生逾期请尽快还清贷款。</p>
                     </div>
                 </li>
-
                 <li>
                     <div class="borrow-info-num">6</div>
                     <div class="borrow-info-txt">

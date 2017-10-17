@@ -55,14 +55,8 @@ $(function(){
               </tr>
               <?php foreach($data as $k=>$v) :?>
               <tr>
-                <td><?=$v['role_id'];?></td>            
-                <td>
-                    <select name="" id="">
-                     <?php foreach($v['node_name'] as $val) :?>
-                       <option value=""><?=$val?></option> 
-                        <?php endforeach;?>
-                    </select>
-                </td>            
+                <td><?=$v['role_id'];?></td>
+                <td><?=$v['node_name'];?></td>
                 <td><?=$v['role_name'];?></td>
                 <td><?=$v['addtime'];?></td>
                 <td><?=$v['role_desc'];?></td>

@@ -56,7 +56,7 @@ $(function(){
                 <th scope="col">房屋首付证明</th>
                 <th scope="col">房屋位置</th>
                 <th scope="col">审核提交时间</th>
-                <th scope="col">估算价格</th>
+                <th scope="col">估价</th>
                 <th scope="col">状态</th>
               </tr>
                   @foreach ($info as $v)
@@ -71,7 +71,7 @@ $(function(){
                 <td><img src="{{$v->house_img}}" alt="" style='width:100px,height:100px'></td>
                 <td>{{$v->house_address}}</td>
                 <td>{{$v->house_addtime}}</td>
-                <td>{{$v->house_price}}¥</td>
+                <td id="{{$v->house_id}}"><span class="rightNow">{{$v->house_price}}¥</span></td>
                 <td>
                     <select name="" house_id="{{$v->house_id}}" class="is_check">
                        {{---<option value="">全部</option>---}}
@@ -156,7 +156,7 @@ $(function(){
             var house_id=obj.attr('house_id');  //ID
             var status=obj.val();   //获取要修改的状态值
             // alert(house_id+','+status);
-            var url="status";
+             var url="status";
         $.ajax({
             type:'get',
             url: url,
@@ -168,7 +168,43 @@ $(function(){
                 window.location.href=window.location.href;
             }
         })
+        });
 
+
+        <!--价格，即点即改-->
+        //定义一个全局变量用来存储修改前的值
+        var num='';
+        $(document).on('click','.rightNow',function(){
+             var _this=$(this);
+            //获取要修改的值 
+            var old_val=$('.rightNow').html();
+            //将该值替换为文本
+             _this.parent().html('<input type="text" class="update" value="'+old_val+'">');
+            num=old_val;
+        })
+         //失去焦点委托事件
+        $(document).on('blur','.update',function(){
+          
+              var _this=$(this);
+              var id=_this.parent().attr('id');  //获取要修改的ID值
+              var new_num=_this.val();  //获取修改后的值
+              if (new_num==''){
+                 _this.parent().html('<span>'+num+'</span>');
+                 alert('noK');
+                 return;
+              }
+               var url="update";
+             $.get(url,{id:id,new_num:new_num},function(data){
+                  if(data==1)
+                {
+                    _this.parent().html('<span>'+new_num+'</span>')
+                }
+                else
+                {
+                    _this.parent().html('<span>'+num+'</span>')
+                }
+
+              })
         })
         })
 </script>

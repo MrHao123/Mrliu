@@ -9,18 +9,18 @@
 <!--框架高度设置-->
 <script type="text/javascript">
 $(function(){
-    $('.sidenav li').click(function(){
-        $(this).siblings('li').removeClass('now');
-        $(this).addClass('now');
-    });
-    
-    $('.erji li').click(function(){
-        $(this).siblings('li').removeClass('now_li');
-        $(this).addClass('now_li');
-    });
-    
-    var main_h = $(window).height();
-    $('.sidenav').css('height',main_h+'px');
+	$('.sidenav li').click(function(){
+		$(this).siblings('li').removeClass('now');
+		$(this).addClass('now');
+	});
+	
+	$('.erji li').click(function(){
+		$(this).siblings('li').removeClass('now_li');
+		$(this).addClass('now_li');
+	});
+	
+	var main_h = $(window).height();
+	$('.sidenav').css('height',main_h+'px');
 })
 </script>
 <!--框架高度设置-->
@@ -29,21 +29,178 @@ $(function(){
 <body>
 <div id="left_ctn">
     <ul class="sidenav">
-    <?php if($data!=0){foreach($data as $k=>$v):?>
         <li class="now">
             <div class="nav_m">
-                <span><a><?=$v['node_name']?></a></span>
+                <span><a>权限管理</a></span>
                 <i>&nbsp;</i>
             </div>
             <ul class="erji">
-         <?php foreach($v[0] as $key=>$val):?>
                 <li class="now_li">
-                    <span><a href="<?php list($class,$action)=explode('@',$val['node_url']);echo $action;?>" target="main"><?=$val['node_name']?></a></span>
+                    <span><a href="adminAdd" target="main">管理员添加</a></span>
                 </li>
-            <?php endforeach;?> 
+                <li>
+                    <span><a href="adminList" target="main">管理员列表</a></span>
+                </li>
+                <li>
+                    <span><a href="roleAdd" target="main">角色添加</a></span>
+                </li>
+                <li>
+                    <span><a href="roleList" target="main">角色列表</a></span>
+                </li>
+                 <li>
+                    <span><a href="nodeAdd" target="main">权限添加</a></span>
+                </li>
+                 <li>
+                    <span><a href="nodeList" target="main">权限列表</a></span>
+                </li>
             </ul>
         </li>
-        <?php endforeach;}?>
+
+
+
+         <li>
+            <div class="nav_m">
+                <span><a>贷款审核管理</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="pending" target="main">房贷未审核列表</a></span>
+                </li>
+                <li>
+                    <span><a href="fwqkz.html" target="main">房贷已审核列表</a></span>
+                </li>
+            </ul>
+        </li>
+
+
+
+
+
+
+
+
+
+
+        <li>
+            <div class="nav_m">
+                <span><a>终端管理</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="zdlb.html" target="main">终端列表</a></span>
+                </li>
+                <li>
+                    <span><a href="hy_list.html" target="main">群组列表</a></span>
+                </li>
+                <li>
+                    <span><a href="sjbf.html" target="main">终端数据备份</a></span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="nav_m">
+                <span><a>流服务器</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="lfpz.html" target="main">流服务器配置</a></span>
+                </li>
+                <li>
+                    <span><a href="fwqkz.html" target="main">流服务器控制</a></span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="nav_m">
+                <span><a>系统诊断</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="mkzt.html" target="main">模块状态</a></span>
+                </li>
+                <li>
+                    <span><a href="mkkz.html" target="main">模块控制</a></span>
+                </li>
+                <li>
+                    <span><a href="wltj.html" target="main">网络统计</a></span>
+                </li>
+                <li>
+                    <span><a href="zcxx.html" target="main">GK注册信息</a></span>
+                </li>
+                <li>
+                    <span><a href="ping.html" target="main">Ping</a></span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="nav_m">
+                <span><a>系统配置</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="xtpz.html" target="main">MCU配置</a></span>
+                </li>
+                <li>
+                    <span><a href="wlpz.html" target="main">网络配置</a></span>
+                </li>
+                <li>
+                    <span><a href="gkpz.html" target="main">GK配置</a></span>
+                </li>
+                <li>
+                    <span><a href="dlpz.html" target="main">FPass配置</a></span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="nav_m">
+                <span><a>日志管理</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="gzrj.html" target="main">故障日志</a></span>
+                </li>
+                <li>
+                    <span><a href="xtrj.html" target="main">系统日志</a></span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="nav_m">
+                <span><a>系统维护</a></span>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="erji">
+                <li>
+                    <span><a href="hy_list.html" target="main">用户信息</a></span>
+                </li>
+                <li>
+                    <span><a href="rjsj.html" target="main">软件升级</a></span>
+                </li>
+                <li>
+                    <span><a href="hfsz.html" target="main">恢复出厂设置</a></span>
+                </li>
+                <li>
+                    <span><a href="sjgl.html" target="main">数据库管理</a></span>
+                </li>
+                <li>
+                    <span><a href="bdcx.html" target="main">数据库补丁程序</a></span>
+                </li>
+                <li>
+                    <span><a href="gnxk.html" target="main">功能许可</a></span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="nav_m">
+                <span><a href="cqxt.html" target="_blank">重启MCU</a></span>
+            </div>
+        </li>
         <li>
             <div class="nav_m">
                 <span><a href="tcxt.html" target="_blank">退出系统</a></span>

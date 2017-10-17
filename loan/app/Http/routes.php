@@ -42,7 +42,9 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'web'], functio
     Route::any('register','RegisterController@register');
     Route::any('register_add','RegisterController@register_add');
     Route::any('mail','RegisterController@mail');
+    //Route::any('verify','loginController@verify');
     Route::any('loan','LoanController@loan');
+    //Route::get('/captcha/{tmp}','LoginController@captcha');
 });
 
 
@@ -60,10 +62,9 @@ Route::any('home/loan','home\LoanController@loan');
 Route::any('home/loan_mation','home\LoanController@loan_mation');
 Route::post('home/loan_add','home\LoanController@loan_add');
 Route::post('home/loan_ok','home\LoanController@loan_ok');
-Route::post('home/loan_okto','home\LoanController@loan_okto');
 //个人中心
 Route::any('home/vip','home\VipController@vip');
-Route::any('home/loan_adddo','home\VipController@loan_adddo');
+Route::any('home/loan_show','home\VipController@loan_show');
 //
 Route::any('home/customer','home\CustomerController@customer');
 //理财
@@ -72,7 +73,6 @@ Route::any('home/company_licai','home\LicaiController@company_licai');
 Route::any('home/company_licai_add','home\LicaiController@company_licai_add');
 Route::post('home/valuetion','home\LicaiController@valuetion');
 Route::get('home/company_licai_adddo','home\LicaiController@company_licai_adddo');
-
 
 
 
@@ -94,14 +94,7 @@ Route::any('admin/roleAdd','admin\RoleController@roleAdd');
 //管理员
 Route::any('admin/adminAdd','admin\AdminController@adminAdd');
 Route::get('admin/adminList','admin\AdminController@adminList');
-Route::any('admin/lists ',' admin\FinancingController@lists ');
-
 //房贷审核--控制器loan
 Route::get('admin/pending','admin\LoanController@pending');
 Route::get('admin/status','admin\LoanController@status');
-
-//广告位
-Route::any('admin/advertisingadd','admin\AdvertisingController@advertisingadd');
-Route::get('admin/advertisinglist','admin\AdvertisingController@advertisinglist');
-Route::get('admin/advertisinghistory','admin\AdvertisingController@advertisinghistory');
-
+Route::get('admin/update','admin\LoanController@update');
