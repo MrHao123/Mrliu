@@ -66,47 +66,50 @@ if(s_code){document.write(s_code);}
 					<div class="clearfix type">
 						<div class="fl before pad_l20">
 							<em class="fc_3 mr_10 fs_14">投标方式</em>
-								<label for="all_1" class="all first" id="timetypeAll"><input class="input" type="checkbox" value="-1">全部</label>
+								<label for="all_1" class="all first tfs" id="timetypeAll"><input  class="tfs" type="checkbox" value="0">全部</label>
 						</div>
 						<div class="fl line_1 pad_t5">
-							<label for="a6" class="" id="btimetype"><input class="input" type="checkbox" value="4,5,6">车贷</label>
-							<label for="a7" class="" id="ctimetype"><input class="input" type="checkbox" value="7,8,9,10,11,12">房贷</label>
-							<label for="a8" class="" id="dtimetype"><input class="input" type="checkbox" value="-2">域名贷</label>
+							<label for="a6" class="tfs" id="btimetype"><input type="checkbox" value="1">车贷</label>
+							<label for="a7" class="tfs" id="ctimetype"><input type="checkbox" class="tfs" value="2">房贷</label>
+							
 						</div>                                
 					</div>
 
 					<div class="clearfix type">
 						<div class="fl before pad_l20">
 							<em class="fc_3 mr_10 fs_14">投标期限</em>
-								<label for="all_1" class="all first" id="timetypeAll"><input class="input" type="checkbox" value="-1">全部</label>
+								<label for="all_1" class="all first mouth" id="timetypeAll"><input class="input" type="checkbox" value="0">全部</label>
 						</div>
 						<div class="fl line_1 pad_t5">
-							<label for="a5" class="" id="atimetype"><input class="input" type="checkbox" value="0,1">1~6个月</label>
-							<label for="a5" class="" id="atimetype"><input class="input" type="checkbox" value="2,3">6~12个月</label>
-							<label for="a8" class="" id="dtimetype"><input class="input" type="checkbox" value="-2">12个月以上</label>
+							<label for="a5" class="mouth" id="atimetype"><input  type="checkbox" value="1">1个月</label>
+							<label for="a5" class="mouth" id="atimetype"><input  type="checkbox" value="3">3个月</label>
+							<label for="a5" class="mouth" id="atimetype"><input  type="checkbox" value="6">6个月</label>
+							<label for="a5" class="mouth" id="atimetype"><input  type="checkbox" value="9">9个月</label>
+							<label for="a8" class="mouth" id="dtimetype"><input  type="checkbox" value="12">12个月</label>
+							<label for="a5" class="mouth" id="atimetype"><input  type="checkbox" value="24">24个月</label>
 						</div>                                
 					</div>
 					<div class="clearfix type clearfix">
 						<div class="clearfix type on_off_box" id="hkfsDiv">
 							<div class="fl before pad_l20">
 								<em class="fc_3 mr_10 fs_14">还款方式</em>
-									<label for="all_2" class="all first" id="retypeAll"><input class="input" type="checkbox" value="-1">全部</label>	
+									<label for="all_2" class="all first hfs" id="retypeAll"><input class="input" type="checkbox" value="0">全部</label>	
 							</div>
 							<div class="fl line_1 pad_t5">
-									<label for="a9" class="" id="aretype"><input class="input" type="checkbox" value="0,1,2,4">等额本息</label>
-									<label for="a10" class="" id="bretype"><input class="input" type="checkbox" value="3">一次付息，到期还本</label> 
+									<label for="a9" class="hfs" id="aretype"><input class="input" type="checkbox" value="1">等额本息</label>
+									<label for="a10" class="hfs" id="bretype"><input class="input" type="checkbox" value="2">一次付息，到期还本</label> 
 							</div>
 						</div>
 					</div>
 					<div class="clearfix type on_off_box" id="zbztDiv">
 						<div class="fl before pad_l20">
 							<em class="fc_3 mr_10 fs_14">招标状态</em>
-								<label for="all_3" class="all" id="stypeAll"><input class="input" type="checkbox" value="-1">全部</label>
+								<label for="all_3" class="all status" id="stypeAll"><input class="input" type="checkbox" value="0">全部</label>
 						</div>
 						<div class="fl line_1 pad_t5">
-								<label for="a11" class="cur" id="astype"><input class="input" type="checkbox" value="1">正在招标</label>
-								<label for="a12" class="" id="bstype"><input class="input" type="checkbox" value="3,9">满标待审</label>
-								<label for="a13" class="" id="cstype"><input class="input" type="checkbox" value="4">成功借款</label>
+								<label for="a11" class="cur status" id="astype"><input class="input" type="checkbox" value="1">正在招标</label>
+								<label for="a12" class="status" id="bstype"><input class="input" type="checkbox" value="2">满标待审</label>
+								<label for="a13" class="status" id="cstype"><input class="input" type="checkbox" value="3">成功借款</label>
 						</div>                         
 					</div>
 					<div class="clearfix"></div> 
@@ -206,7 +209,66 @@ if(s_code){document.write(s_code);}
 		</div>
 	</div>
 </div>
+<button id="btn">这是按钮</button>
+
 <!--正文结束-->
+<script>
+//整体思路：每个方式都会 然后都要取cookie
+	//多选  投标方式（车贷，房贷）
+	$(".tfs").click(function(){
+		var tfs=$(this).children().val();
+		$.cookie("tfs",tfs);
+		//取另外三个的cookie
+		var mouth=$.cookie("mouth");//投标期限
+		var hfs=$.cookie("hfs");//还款方式
+		var status=$.cookie("status")//投标状态
+		//期限
+		if(mouth==null){
+			mouth1=0;
+
+		}else{
+			mouth1=mouth;
+		}
+		//还款方式
+		if(hfs==null){
+			h_way=0;
+
+		}else{
+			h_way=hfs;
+		}
+		//投标状态
+		if(status==null){
+			zhao_status=0;
+
+		}else{
+			zhao_status=status;
+		}
+		window.location.href="personal?tfs="+tfs+"&mouth1="+mouth1+"&h_way="+h_way+"&zhao_status="+zhao_status;
+
+		
+	})
+	//投标月份
+	$(".mouth").click(function(){
+		var mouth=$(this).children().val();
+		$.cookie("mouth",mouth);
+		
+	})
+	//还款方式
+	$(".hfs").click(function(){
+		var hfs=$(this).children().val();
+		$.cookie("hfs",hfs);
+		
+	})
+	//招标状态
+	$(".status").click(function(){
+		var status=$(this).children().val();
+		$.cookie("status",status);
+		
+	})
+
+
+	
+</script>
 <!--foot-->
 
 <script type="text/javascript" src="{{asset('home/js/个人理财js/jquery.js')}}"></script>
@@ -229,6 +291,7 @@ if(s_code){document.write(s_code);}
 <!--静态化 - 头部内容-->
 <script type="text/javascript" src="{{asset('home/js/个人理财js/index.js')}}"></script>
 <script src="{{asset('home/js/个人理财js/214b54c481c5063fd62c3426b6ad0a99.js')}}" charset="UTF-8"></script>
+<script src="{{asset('home/js/个人理财js/jquery.cookie.js')}}"></script>
 <script type="text/javascript">
 $(function(){
 	var userid = '0';

@@ -15,7 +15,7 @@ class RegisterController extends Controller{
     }
     public function register_add(Request $request)
     {
-        
+        header("content-type:text/html;charset=utf8");
     	$data = $request->input();
         $user_pwd = $data['user_pwd'];
         $user_email = $data['user_email'];
@@ -36,7 +36,7 @@ class RegisterController extends Controller{
             'user_email'=>$user_email,
             'user_pwd'=>$userpwd,
         );
-        $info = DB::table('lz_user')->insert($arr);
+        $info = DB::table('user')->insert($arr);
         if ($info) 
         {
             return redirect('home/login');
