@@ -21,7 +21,6 @@
         <div class="ofh wl mtauto bg_color2">
 
             <?php foreach($data as $k => $v) :?>
-
             <div class="wanted-borrow bd_e6 mt22 ofh wanted-borrow-wdx1">
                 <div class="fl bg_color6 wanted-borrow-l">
                     <p class="fs20 fc3 tc mt35 mb25"><?php echo $v->type_name;?></p>
@@ -170,15 +169,4 @@
         </div>
     </div>
 
-    <div class="wzlb-right f-r">
-        <div class="wzlb-r-info1">
-        </div>
-    </div>
-    <div style="clear:both;"></div>
-    </dl>
-    </div>
-    <div style="clear:both;"></div>
-    </div>
-    </body>
-    </html>
 @endsection

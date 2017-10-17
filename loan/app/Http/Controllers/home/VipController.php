@@ -63,26 +63,6 @@ class VipController extends Controller{
         }
         return view('home/vip/vip');
     }
-    //贷款信息添加
-    public function loan_adddo()
-    {
-        //实例化session
-        $session = new Session;
-        $zz=$session->get("user_id");
-        //接值
-        $type = $_POST['type_id'];
-        $house = $_POST['house_id'];
-        $edu = $_POST['edu'];
-        $loan_time = $_POST['loan_time'];
-        $loan_rate = $_POST['loan_rate'];
-        $plan = $_POST['plan'];
-        $time = date('Y-m-d H:i:s');
-        $data = DB::table('loan')->insert(['type_id'=>$type,'user_id'=>$zz,'add_time'=>$time,'house_id'=>$house,'edu'=>$edu,'loan_time'=>$loan_time,'loan_rate'=>$loan_rate,'plan'=>$plan]);
-        if($data){
-            return view('home/loan/loan_okto');
-        }
-    }
-
 
 }
 

@@ -1,103 +1,103 @@
 @extends('header')
 @section('content')
         <!--18贷信息填写页面内容开始-->
-    		<!--当前地点-->
-    <div class="current-dd w1120">
-    	<p><a href="#">首页</a> > <a href="#">首次登录跳转页面</a></p>
-    </div>
-    
-    		<!--18贷信息填写页面   开始-->
-    <div class="dai-xingxi w1120">
+<!--当前地点-->
+<div class="current-dd w1120">
+    <p><a href="#">首页</a> > <a href="#">首次登录跳转页面</a></p>
+</div>
 
-        <div class="dai-xx-con">
-            <div class="dai-xx-left f-l">
-                <div class="dai-x-l2">
-                	<div class="dai-l2-title">
-                <?php foreach($data as $k=>$v): ?>
-                    	<h3><?php echo $v->type_name; ?></h3>
-                        <?php endforeach ; ?>
-                    </div>
-                    <div class="dai-l2-box">
-                    	<ul class="dai-l2-con f-l">
-                            <form action="loan_add" method="post" enctype="multipart/form-data">
-                                <li>
-                                    <p>贷款类型：</p>
-                                    <p><?php echo $v->type_name; ?></p>
-                                    <input type="hidden" value="<?php echo $v->type_id; ?>" name="type_id"/>
-                                    <div style="clear:both;"></div>
-                                </li>
+<!--18贷信息填写页面   开始-->
+<div class="dai-xingxi w1120">
+
+    <div class="dai-xx-con">
+        <div class="dai-xx-left f-l">
+            <div class="dai-x-l2">
+                <div class="dai-l2-title">
+                    <?php foreach($data as $k=>$v): ?>
+                    <h3><?php echo $v->type_name; ?></h3>
+                    <?php endforeach ; ?>
+                </div>
+                <div class="dai-l2-box">
+                    <ul class="dai-l2-con f-l">
+                        <form action="loan_add" method="post" enctype="multipart/form-data">
+                            <li>
+                                <p>贷款类型：</p>
+                                <p><?php echo $v->type_name; ?></p>
+                                <input type="hidden" value="<?php echo $v->type_id; ?>" name="type_id"/>
+                                <div style="clear:both;"></div>
+                            </li>
                             <li>
                                 <p>房主姓名：</p>
-                                <input type="text" name="house_name" id="name" class="reg_name"/>
+                                <input type="text" name="house_name" class="reg_name" placeholder="请输入姓名"/>
                                 <span class="tip user_hint"></span>
                                 <div style="clear:both;"></div>
 
                             </li>
-                                <li>
-                                    <p>亲属姓名：</p>
-                                    <input type="text" name="house_name_relatives"  class="reg_name2"/>
-                                    <span class="tip user_hint2"></span>
-                                    <div style="clear:both;"></div>
-                                </li>
-                                <li>
-                                    <p>亲属关系：</p>
-                                    <input type="text" name="house_relationship" class="guanxi"/>
-                                    <span class="tip user_hint3"></span>
-                                    <div style="clear:both;"></div>
-                                </li>
-                                <li>
-                                    <p>亲属联系方式：</p>
-                                    <input type="text" name="house_relationship_tel"/>
-                                    <div style="clear:both;"></div>
-                                </li>
+                            <li>
+                                <p>亲属姓名：</p>
+                                <input type="text" name="house_name_relatives"  class="reg_name2" placeholder="请输入亲属姓名"/>
+                                <span class="tip user_hint2"></span>
+                                <div style="clear:both;"></div>
+                            </li>
+                            <li>
+                                <p>亲属关系：</p>
+                                <input type="text" name="house_relationship" class="guanxi" placeholder="请输入亲属关系"/>
+                                <span class="tip user_hint3"></span>
+                                <div style="clear:both;"></div>
+                            </li>
+                            <li>
+                                <p>亲属联系方式：</p>
+                                <input type="text" name="house_relationship_tel" class="tel" placeholder="请输入手机号"/>
+                                <span class="tip user_hint4"></span>
+                                <div style="clear:both;"></div>
+                            </li>
                             <li>
                                 <p>房产证照片：</p>
                                 <input type="file" name="house_img"/>
                                 <div style="clear:both;"></div>
                             </li>
-                                <li>
-                                    <p>房屋首付证明：</p>
-                                    <input type="file" name="house_prove"/>
-                                    <div style="clear:both;"></div>
-                                </li>
+                            <li>
+                                <p>房屋首付证明：</p>
+                                <input type="file" name="house_prove"/>
+                                <div style="clear:both;"></div>
+                            </li>
                             <li>
                                 <p>房屋位置：</p>
                                 <input type="text" name="house_address"/>
                                 <div style="clear:both;"></div>
                             </li>
 
-                                <li align="center">
-                                    <input type="submit" value="提交信息" />
-                                    <div style="clear:both;"></div>
-                                </li>
-                            </form>
-                        </ul>
-                        <div class="dai-l2-tu f-r">
-                        	<img src="{{asset('home/images/xiangxi-03.gif')}}" />
-                        </div>
-                        <div style="clear:both;"></div>
+                            <li align="center">
+                                <input type="submit" value="提交信息" />
+                                <div style="clear:both;"></div>
+                            </li>
+                        </form>
+                    </ul>
+                    <div class="dai-l2-tu f-r">
+                        <img src="{{asset('home/images/xiangxi-03.gif')}}" />
                     </div>
+                    <div style="clear:both;"></div>
                 </div>
+            </div>
 
-            </div>
-            <div class="dai-xx-right f-l" >
-            	<h3>特别声明：</h3>
-                <p>您的信息将只作为产品推荐使用，不会以任何形式泄露给其他人员或机构。</p>
-                <p>您的信息将只作为产品推荐使用，不会以任何形式泄露给其他人员或机构。</p>
-            </div>
-            <div style="clear:both;"></div>
         </div>
+        <div class="dai-xx-right f-l" >
+            <h3>特别声明：</h3>
+            <p>您的信息将只作为产品推荐使用，不会以任何形式泄露给其他人员或机构。</p>
+            <p>您的信息将只作为产品推荐使用，不会以任何形式泄露给其他人员或机构。</p>
+        </div>
+        <div style="clear:both;"></div>
     </div>
+</div>
 <script>
-    //
     //验证姓名
-$('.reg_name').blur(function(){
-if ((/^[\u4e00-\u9fa5]{2,4}$/).test($(".reg_name").val())){
-$('.user_hint').html("✔").css("color","green");
-}else {
-$('.user_hint').html("您输入的有误，请重新输入").css("color","red");
-}
-});
+    $('.reg_name').blur(function(){
+        if ((/^[\u4e00-\u9fa5]{2,4}$/).test($(".reg_name").val())){
+            $('.user_hint').html("✔").css("color","green");
+        }else {
+            $('.user_hint').html("您输入的有误，请重新输入").css("color","red");
+        }
+    });
     //验证亲属姓名
     $('.reg_name2').blur(function(){
         if ((/^[\u4e00-\u9fa5]{2,4}$/).test($(".reg_name2").val())){
@@ -112,6 +112,14 @@ $('.user_hint').html("您输入的有误，请重新输入").css("color","red");
             $('.user_hint3').html("✔").css("color","green");
         }else {
             $('.user_hint3').html("您输入的有误，请重新输入").css("color","red");
+        }
+    });
+    //验证手机号
+    $('.tel').blur(function(){
+        if ((/^1[34578]\d{9}$/).test($(".tel").val())){
+            $('.user_hint4').html("✔").css("color","green");
+        }else {
+            $('.user_hint4').html("您输入的有误，请重新输入").css("color","red");
         }
     });
 </script>

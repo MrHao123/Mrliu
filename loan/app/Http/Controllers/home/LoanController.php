@@ -64,11 +64,35 @@ class LoanController extends CommentController{
         $house_address = $_POST['house_address'];
         $re=DB::table('houseloan')->insert(['type_id'=>$type_id,'house_name'=>$house_name,'house_name_relatives'=>$house_name_relatives,'house_relationship'=>$house_relationship,'house_relationship_tel'=>$house_relationship_tel,'house_img'=>$path,'house_prove'=>$path2,'house_address'=>$house_address,'house_addtime'=>$time,'user_id'=>$user_id]);
         if($re){
-//            echo "<script>alert('申请成功,请到我的账号查看进度');location.href='loan_ok'</script>";
+
             return view('home/loan/loan_ok');
         }
     }
+    //第二次审核
+    public function loan_user()
+    {
+        return view('home/loan/loan_user');
+    }
+    //第二次审核添加
+    public function credit_add()
+    {
+        $session = new Session;
+        $user_id=$session->get("user_id");
+        $credit_name = $_POST['credit_name'];
+        $credit_money = $_POST['credit_money'];
+        $data = DB::table('credit')->insert(['credit_name'=>$credit_name,'credit_money'=>$credit_money,'user_id'=>$user_id]);
 
+        if($data)
+        {
+            echo "<script>alert('申请成功,请到我的账号查看进度');location.href='loan_okto'</script>";
+        }
+    }
+    //
+    public function loan_okto()
+    {
+        $reg = DB::table('credit')->get();
+        return view('home/loan/loan_okto',['reg'=>$reg]);
+    }
 
 
 }

@@ -60,10 +60,13 @@ Route::any('home/loan','home\LoanController@loan');
 Route::any('home/loan_mation','home\LoanController@loan_mation');
 Route::post('home/loan_add','home\LoanController@loan_add');
 Route::post('home/loan_ok','home\LoanController@loan_ok');
-Route::post('home/loan_okto','home\LoanController@loan_okto');
+Route::any('home/loan_user','home\LoanController@loan_user');
+Route::post('home/credit_add','home\LoanController@credit_add');
+Route::any('home/loan_okto','home\LoanController@loan_okto');
 //个人中心
 Route::any('home/vip','home\VipController@vip');
 Route::any('home/loan_adddo','home\VipController@loan_adddo');
+
 //
 Route::any('home/customer','home\CustomerController@customer');
 //理财
