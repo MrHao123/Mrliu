@@ -32,6 +32,7 @@ class IndexController extends CommonController{
         {
             $node=DB::select("select * from lz_node where is_del =1");
             $rest=$this->ParentChilds($node);
+    
         }
         else
         {
@@ -44,6 +45,7 @@ class IndexController extends CommonController{
                 $node_id=implode(',',$arr);
                 $node=DB::select("select * from lz_node where node_id in(".$node_id.")");
                 $rest=$this->ParentChilds($node);
+
             }
             else
             {

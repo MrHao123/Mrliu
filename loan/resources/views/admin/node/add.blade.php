@@ -69,7 +69,7 @@ $(function(){
                         <div class="li_r xial">
                             <div class="xial_w">
                                 <div class="xial_m">
-                                    <input class="duan"  type="text" placeholder="请选择">&nbsp;&nbsp;&nbsp;<i>默认为顶级</i>
+                                    <input class="duan"  type="text" placeholder="请选择">
                                     <input type="hidden" name='p_id' value="0" class="p_id">
                                     <span>&nbsp;</span>
                                 </div>

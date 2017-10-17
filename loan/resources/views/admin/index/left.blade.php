@@ -36,11 +36,11 @@ $(function(){
                 <i>&nbsp;</i>
             </div>
             <ul class="erji">
-         <?php foreach($v[0] as $key=>$val):?>
+         <?php if(isset($v[0])){foreach($v[0] as $key=>$val):?>
                 <li class="now_li">
                     <span><a href="<?php list($class,$action)=explode('@',$val['node_url']);echo $action;?>" target="main"><?=$val['node_name']?></a></span>
                 </li>
-            <?php endforeach;?> 
+            <?php endforeach;}?> 
             </ul>
         </li>
         <?php endforeach;}?>

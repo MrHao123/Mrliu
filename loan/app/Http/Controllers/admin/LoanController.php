@@ -10,7 +10,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
-class LoanController extends Controller
+use App\Http\Controllers\Admin\Common;
+class LoanController extends CommonController
 {
     /*房贷审核展示页面*/
     public function pending()
