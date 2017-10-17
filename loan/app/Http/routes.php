@@ -40,9 +40,11 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'web'], functio
     Route::any('tui','LoginController@tui');
     Route::any('index','IndexController@index');
     Route::any('register','RegisterController@register');
-    Route::any('register_add','RegisterController@register_add');
+    Route::any('register/register_add','RegisterController@register_add');
     Route::any('mail','RegisterController@mail');
     Route::any('loan','LoanController@loan');
+    Route::get('register/send','RegisterController@send');//
+    Route::get('captcha/{tmp}','LoginController@captcha');//验证码
 });
 
 
@@ -104,4 +106,6 @@ Route::get('admin/status','admin\LoanController@status');
 Route::any('admin/advertisingadd','admin\AdvertisingController@advertisingadd');
 Route::get('admin/advertisinglist','admin\AdvertisingController@advertisinglist');
 Route::get('admin/advertisinghistory','admin\AdvertisingController@advertisinghistory');
+//理财
+//Route::any('financing/lists ',' admin\FinancingController@lists ');
 

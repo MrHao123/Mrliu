@@ -1,8 +1,3 @@
-<?php
-use Symfony\Component\HttpFoundation\Session\Session;
-$session = new Session;
-?>
-
 <!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -100,14 +95,16 @@ $session = new Session;
         </div>
         <ul class="hd-right f-r">
             <li>
-                @if(!empty($session->get("user_email")))
-                    {{$session->get("user_email")}}
+                          <li> 
+                @if(!empty(Session::get("user_email")))
+                {{Session::get("user_email")}}   
                 @else
-                    <a href='login'>登录</a>
+                <a href='login'>登录</a>
                 @endif
-
-
-                |<a href="register">注 册</a>
+               
+               
+                  |<a href="register">注 册</a> | <a href="tui">退 出</a></li>
+            <li>
             </li>
         </ul>
         <div style="clear:both;"></div>
