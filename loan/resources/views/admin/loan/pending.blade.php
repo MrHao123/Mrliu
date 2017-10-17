@@ -56,7 +56,7 @@ $(function(){
                 <th scope="col">房屋首付证明</th>
                 <th scope="col">房屋位置</th>
                 <th scope="col">审核提交时间</th>
-                <th scope="col">审核完成时间</th>
+                <th scope="col">估算价格</th>
                 <th scope="col">状态</th>
               </tr>
                   @foreach ($info as $v)
@@ -71,7 +71,7 @@ $(function(){
                 <td><img src="{{$v->house_img}}" alt="" style='width:100px,height:100px'></td>
                 <td>{{$v->house_address}}</td>
                 <td>{{$v->house_addtime}}</td>
-                <td>{{$v->house_endtime}}</td>
+                <td>{{$v->house_price}}¥</td>
                 <td>
                     <select name="" house_id="{{$v->house_id}}" class="is_check">
                        {{---<option value="">全部</option>---}}
@@ -152,12 +152,11 @@ $(function(){
 <script>
     $(function(){
         $('.is_check').change(function(){
-            // alert(1);die;
             var obj=$(this);
             var house_id=obj.attr('house_id');  //ID
             var status=obj.val();   //获取要修改的状态值
             // alert(house_id+','+status);
-             var url="status";
+            var url="status";
         $.ajax({
             type:'get',
             url: url,

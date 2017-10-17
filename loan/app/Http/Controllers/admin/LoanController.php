@@ -16,7 +16,7 @@ class LoanController extends Controller
     public function pending()
    {
      $info = DB::table('houseloan')->get();
-     // print_r($info);
+      // print_r($info);die;
      return view('admin.loan.pending',['info'=>$info]);        
    }
    
