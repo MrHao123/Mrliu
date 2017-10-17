@@ -15,17 +15,16 @@ Time: 20:27
 */
 
 namespace App\Http\Controllers\Home;
-
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
-class LoanController extends Controller{
+class LoanController extends CommentController{
 
     //贷款页面
     public function loan()
     {
-        $data = DB::table('lz_loantype')->get();
+        $data = DB::table('loantype')->get();
         return view('home/loan/loan',['data'=>$data]);
     }
 
@@ -33,33 +32,37 @@ class LoanController extends Controller{
     public function loan_mation()
     {
         $id   = $_GET['id'];
-        $data = DB::table('lz_loantype')->where('type_id','=',$id)->get();
+        $data = DB::table('loantype')->where('type_id','=',$id)->get();
         return view('home/loan/loan_mation',['data'=>$data]);
     }
 
     //房款信息添加
     public function loan_add()
     {
+
         $session = new Session;
         $user_id=$session->get("user_id");
         //图片上传
         $file = $_FILES;
-        $name = $file['house_img']['name'];
-        $path = "Upload/".$name;
+        $name =  $file['house_img']['name'];
+        $new_name = rand(time($name),1000);
+        $path = "Upload/".$new_name.".jpg";
         move_uploaded_file($file['house_img']['tmp_name'],$path);
 
         $file = $_FILES;
         $name = $file['house_prove']['name'];
-        $path2 = "Upload/".$name;
+        $new_name = rand(time($name),1000);
+        $path2 = "Upload/".$new_name.".jpg";
         move_uploaded_file($file['house_prove']['tmp_name'],$path2);
 
         $time = date('Y-m-d H:i:s');
+        $type_id = $_POST['type_id'];
         $house_name = $_POST['house_name'];
         $house_name_relatives = $_POST['house_name_relatives'];
         $house_relationship = $_POST['house_relationship'];
         $house_relationship_tel = $_POST['house_relationship_tel'];
         $house_address = $_POST['house_address'];
-        $re=DB::table('lz_houseloan')->insert(['house_name'=>$house_name,'house_name_relatives'=>$house_name_relatives,'house_relationship'=>$house_relationship,'house_relationship_tel'=>$house_relationship_tel,'house_img'=>$path,'house_prove'=>$path2,'house_address'=>$house_address,'house_addtime'=>$time,'user_id'=>$user_id]);
+        $re=DB::table('houseloan')->insert(['type_id'=>$type_id,'house_name'=>$house_name,'house_name_relatives'=>$house_name_relatives,'house_relationship'=>$house_relationship,'house_relationship_tel'=>$house_relationship_tel,'house_img'=>$path,'house_prove'=>$path2,'house_address'=>$house_address,'house_addtime'=>$time,'user_id'=>$user_id]);
         if($re){
 //            echo "<script>alert('申请成功,请到我的账号查看进度');location.href='loan_ok'</script>";
             return view('home/loan/loan_ok');
