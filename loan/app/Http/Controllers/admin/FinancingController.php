@@ -5,8 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use APP\Http\Requests;
 use DB;
-//use App\Http\Controllers\Admin\Common;
-class FinancingController extends Controller
+use App\Http\Controllers\Admin\Common;
+class FinancingController extends CommonController
 {
 	public function lists()
 	{

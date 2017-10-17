@@ -53,7 +53,7 @@ class NodeController extends CommonController
 		}
 		else
 		{
-			$Resnode=DB::table('node')->where('is_del','=','1')->get();
+			$Resnode=DB::table('node')->where('is_del','=','1')->where('p_id','=','0')->get();
     		return view('admin/node/add',['data'=>$Resnode]);
 		}
     }

@@ -188,6 +188,9 @@
         <!-- 2 -->
         <div class="hy-left-info2" id='two' style="display: none">
             <h3 class="hy-left-title1">我的借款</h3>
+        <div class="hy-if3-k1">
+           
+      
             <?php foreach($data as $k=>$v) :?>
             <?php if($v->house_state == 1){ ?>
             <div>

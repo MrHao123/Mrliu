@@ -97,7 +97,9 @@ Route::any('admin/roleAdd','admin\RoleController@roleAdd');
 //管理员
 Route::any('admin/adminAdd','admin\AdminController@adminAdd');
 Route::get('admin/adminList','admin\AdminController@adminList');
-Route::any('admin/lists ',' admin\FinancingController@lists ');
+Route::any('admin/lists','admin\FinancingController@lists');
+//数据库备份
+Route::any('admin/mysqlAdd','admin\MysqlController@mysqlAdd');
 
 //房贷审核--控制器loan
 Route::get('admin/pending','admin\LoanController@pending');

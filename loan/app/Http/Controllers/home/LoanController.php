@@ -31,9 +31,30 @@ class LoanController extends CommentController{
     //房款信息填写
     public function loan_mation()
     {
-        $id   = $_GET['id'];
-        $data = DB::table('loantype')->where('type_id','=',$id)->get();
-        return view('home/loan/loan_mation',['data'=>$data]);
+        $session = new Session;
+        $user_id=$session->get("user_id");
+        $user=DB::table('info')->where('user_id','=',$user_id)->where('is_del','=',1)->get();
+        if(!$user)
+        {
+            $error=0;//未实名认证
+            return view('home/loan/loan_mation',['error'=>$error]);
+        }
+        else
+        {
+            $error=1;//已实名认证
+            $id   = $_GET['id'];
+            $data = DB::table('loantype')->where('type_id','=',$id)->get();
+            if($data)
+            {
+                 return view('home/loan/loan_mation',['data'=>$data,'error'=>$error]);
+            }
+            else
+            {
+                $msg='-1';//数据库查询失败
+                return view('home/loan/loan_mation',['msg'=>$msg,'error'=>$error]);
+            }
+        }
+       
     }
 
     //房款信息添加
