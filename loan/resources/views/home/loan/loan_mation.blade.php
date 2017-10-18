@@ -1,7 +1,7 @@
 @extends('header')
 @section('content')
 
-<?php if($error==1){?>
+<?php if($error==1){ ?>
 
     <?php if($msg!=-1){?>
         <!--18贷信息填写页面内容开始-->

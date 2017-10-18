@@ -18,7 +18,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Session;
 class LoanController extends CommentController{
 
     //贷款页面
@@ -31,8 +31,8 @@ class LoanController extends CommentController{
     //房款信息填写
     public function loan_mation()
     {
-        $session = new Session;
-        $user_id=$session->get("user_id");
+
+        $user_id = Session::get("user_id");
         $user=DB::table('info')->where('user_id','=',$user_id)->where('is_del','=',1)->get();
         if(!$user)
         {
@@ -46,7 +46,7 @@ class LoanController extends CommentController{
             $data = DB::table('loantype')->where('type_id','=',$id)->get();
             if($data)
             {
-                 return view('home/loan/loan_mation',['data'=>$data,'error'=>$error]);
+                return view('home/loan/loan_mation',['data'=>$data,'error'=>$error]);
             }
             else
             {
@@ -54,15 +54,14 @@ class LoanController extends CommentController{
                 return view('home/loan/loan_mation',['msg'=>$msg,'error'=>$error]);
             }
         }
-       
+
     }
 
     //房款信息添加
     public function loan_add()
     {
 
-        $session = new Session;
-        $user_id=$session->get("user_id");
+        $user_id = Session::get("user_id");
         //图片上传
         $file = $_FILES;
         $name =  $file['house_img']['name'];
@@ -89,30 +88,29 @@ class LoanController extends CommentController{
             return view('home/loan/loan_ok');
         }
     }
-    //第二次审核
-    public function loan_user()
-    {
-        return view('home/loan/loan_user');
-    }
+
     //第二次审核添加
     public function credit_add()
     {
-        $session = new Session;
-        $user_id=$session->get("user_id");
+        $user_id = Session::get("user_id");
         $credit_name = $_POST['credit_name'];
         $credit_money = $_POST['credit_money'];
         $data = DB::table('credit')->insert(['credit_name'=>$credit_name,'credit_money'=>$credit_money,'user_id'=>$user_id]);
-
         if($data)
         {
-            echo "<script>alert('申请成功,请到我的账号查看进度');location.href='loan_okto'</script>";
+            echo DB::update('update lz_houseloan set house_show = 1');
+            echo "<script>alert('申请成功,请到我的账号查看进度');location.href='vip'</script>";
         }
     }
-    //
-    public function loan_okto()
+    //贷款页面
+    public function loan_user()
     {
-        $reg = DB::table('credit')->get();
-        return view('home/loan/loan_okto',['reg'=>$reg]);
+        $user_id = Session::get("user_id");
+        $date = DB::table('houseloan')->where('user_id',$user_id)->get();
+        $type = DB::table('loantype')->get();
+        $rate = DB::table('year_rate')->get();
+        $repay = DB::table('repay')->get();
+        return view('home/loan/loan_user',['date'=>$date,'type'=>$type,'rate'=>$rate,'repay'=>$repay]);
     }
 
 

@@ -18,23 +18,19 @@ namespace App\Http\Controllers\Home;
 use App\Http\Requests\Request;
 use DB;
 
-use Symfony\Component\HttpFoundation\Session\Session;
+use Session;
 use App\Http\Controllers\Controller;
 
 class VipController extends Controller{
     //渲染首页
     public function vip()
     {
-        $session = new Session;
-        $aa=$session->get("user_id");
-        $select=DB::table('info')->where('user_id','=','1')->get();
-        $data = DB::table('houseloan')->where('user_id',$aa)->get();
-        $term = DB::table('loanterm')->get();
-        $rate = DB::table('year_rate')->get();
-        $type = DB::table('loantype')->get();
-
+        $aa      = Session::get("user_id");
+        $select  = DB::table('info')->where('user_id','=','1')->get();
+        $data    = DB::table('houseloan')->where('user_id',$aa)->get();
+        $reg     = DB::table('credit')->where('user_id',$aa)->get();
         if($select) {
-            return view('home/vip/vip', ['select' => $select,'data' => $data,'term'=>$term,'rate'=>$rate,'type'=>$type]);
+            return view('home/vip/vip', ['select' => $select,'data' => $data,'reg'=>$reg]);
         }else{
             return view('home/vip/vip', ['select' => 1]);
         }
@@ -42,18 +38,18 @@ class VipController extends Controller{
     //添加个人信息
     public function information( )
     {
-        $session = new Session;
-        $user_id=$session->get("user_id");
-        $info_name=$_POST['info_name'];
-        $info_card=$_POST['info_card'];
-        $info_age=$_POST['info_age'];
-        $info_sex=$_POST['info_sex'];
-        $info_tel=$_POST['info_tel'];
-        $info_email=$_POST['info_email'];
-        $info_address=$_POST['info_address'];
-        $info_newaddress=$_POST['info_newaddress'];
-        $info_company=$_POST['info_company'];
-        $info_money=$_POST['info_money'];
+        $session         = new Session;
+        $user_id         = $session->get("user_id");
+        $info_name       = $_POST['info_name'];
+        $info_card       = $_POST['info_card'];
+        $info_age        = $_POST['info_age'];
+        $info_sex        = $_POST['info_sex'];
+        $info_tel        = $_POST['info_tel'];
+        $info_email      = $_POST['info_email'];
+        $info_address    = $_POST['info_address'];
+        $info_newaddress = $_POST['info_newaddress'];
+        $info_company    = $_POST['info_company'];
+        $info_money      = $_POST['info_money'];
         $is_del=1;
         $data= DB::table('info')->insert(['user_id'=>$user_id, 'info_name'=>$info_name,'info_card'=>$info_card,'info_age'=>$info_age,'info_sex'=>$info_sex,'info_tel'=>$info_tel,'info_email'=>$info_email,'info_address'=>$info_address, 'info_newaddress'=>$info_newaddress, 'info_company'=>$info_company,'info_money'=>$info_money,'is_del'=>$is_del]);
         if($data){
@@ -67,23 +63,23 @@ class VipController extends Controller{
     //充值 recharge
 
     public function recharge()
-        {
-            //实例化session
-            print_r($_POST);die;
-            
-            // $session = new Session;
-            // $user_id=$session->get("user_id");
-            // //接值
-            // $cz_card = $_POST['cz_card'];
-            // // $cz_type = $_POST['cz_type'];
-            // $cz_pwd = $_POST['cz_pwd'];
-            // $cz_addtime = date('Y-m-d H:i:s');
-            // $is_del=1;
-            // $data = DB::table('recharge')->insert(['cz_card'=>$cz_card,'cz_pwd'=>$cz_pwd,'user_id'=>$user_id,'cz_addtime'=>$cz_addtime,'is_del'=>$is_del]);
-            //     if($data){
-            //         return view('home/vip/recharge');
-            //     }
-        }
+    {
+        //实例化session
+        print_r($_POST);die;
+
+        // $session = new Session;
+        // $user_id=$session->get("user_id");
+        // //接值
+        // $cz_card = $_POST['cz_card'];
+        // // $cz_type = $_POST['cz_type'];
+        // $cz_pwd = $_POST['cz_pwd'];
+        // $cz_addtime = date('Y-m-d H:i:s');
+        // $is_del=1;
+        // $data = DB::table('recharge')->insert(['cz_card'=>$cz_card,'cz_pwd'=>$cz_pwd,'user_id'=>$user_id,'cz_addtime'=>$cz_addtime,'is_del'=>$is_del]);
+        //     if($data){
+        //         return view('home/vip/recharge');
+        //     }
+    }
 
 }
 
