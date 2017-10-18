@@ -48,6 +48,7 @@ class loginController extends Controller{
         }else
         {
             Session::put('user_email', $user_email);
+            Session::put('user_id', $arr->user_id);
             return redirect('home/index');
         }  
     }
