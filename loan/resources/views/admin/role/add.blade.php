@@ -61,16 +61,20 @@ $(function(){
                         <span class="title">权限分配：</span>
                      
                       <table>
+                      <?php if(!empty($data)){?>
                        @foreach($data as $key=>$val)
                        <tr>
                             <td><input type="checkbox" name="node_id[]" value="{{$val['node_id']}}"></td>
                             <td>{{$val['node_name']}}：</td>
+                             <?php if(isset($val[0])){?>
                             @foreach($val[0] as $k=>$v)
                             <td><input type="checkbox" name="node_id[]" value="{{$v['node_id']}}"></td>
                             <td>{{$v['node_name']}}</td>
                             @endforeach
+                               <?php }?>
                         </tr>
                        @endforeach
+                       <?php }?>
                         </table>
                     </li>
                     <li class="clearfix">

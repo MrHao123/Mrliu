@@ -1,49 +1,45 @@
 @extends('header')
 @section('content')
      <!-- 广告位 -->
-     {{--<script>--}}
-         {{--var width=document.body.scrollWidth;--}}
-         {{--alert(width)--}}
-
-     {{--</script>--}}
+   
 <div class="chedai-banner">
      <style>
 
-             #frame{position:absolute;width:1536px;height:300px;overflow:hidden;border-radius:5px;}
-             #dis{position:absolute;left:0px;top:0px;opacity:.5}
-             #dis li{display:inline-block;width:200px;height:40px;margin:150px 20px 20px 1300px;float:left;text-align:center;color:#fff;border-radius:10px;background:#000}
-             #photos img{float:left;width:1536px;height:300px; }
-             #photos {  position: absolute;z-index:9;  width: calc(1536px * 4);/*---修改图片数量的话需要修改下面的动画参数*/  }
+             #frame{position:absolute;left:29%;right:top:0px;width:800px;height:280px;overflow:hidden;border-radius:5px;text-align:center;}
+             #dis{position:absolute;left:1300px;top:210px;opacity:.5;text-align:center}
+             #dis li{display:inline-block;width:200px;height:22px;float:left; text-align:center; position: absolute;font-size:20px;color:#16D0C3;border-radius:10px;}
+             #name{position:absolute;left:1300px;top:180px;width:200px;height:21px;font-size:20px;color:#EA2000;border-radius:10px;}
+             #photos img{float:right;width:800px;height:280px; }
+             #photos {  position: absolute;z-index:9;  width: calc(800px * 4);/*---修改图片数量的话需要修改下面的动画参数*/  }
              .play{ animation: ma 10s ease-out infinite alternate;}
              @keyframes ma {
-                 0%,25% {        margin-left: 0px;       }
-                 30%,50% {       margin-left: -1536px;    }
-                 55%,75% {       margin-left: -3072px;    }
-                80%,100% {       margin-left: -4608px;    }
+                 0%,25%  {   margin-left: 0px;}
+                 30%,50% {  margin-left: -800px;}
+                 55%,75% {  margin-left: -1600px;}
+                80%,100% {  margin-left: -2400px;}
 
             }
-         </style>
+         </style>·
+   
     <div id="frame" >
 
-        <div id="photos" class="play">
-            <p id="box"></p>
-            <img src="images/chedai-01.jpg" >
-            <img src="images/fangdai2-01.jpg" >
-            <img src="images/chedai-01.jpg" >
-            <img src="images/fangdai2-01.jpg" >
-            <ul id="dis">
-                <li>李晨光</li>
-                <li>郝文昌</li>
-                <li>纪同良</li>
-                <li>柳岩</li>
-            </ul>
-        </div>
+     <div id="photos" class="play">
+      <p id="box"></p>
+             <?php foreach ($data as $val) : ?> 
+                <tr>
+                <img  src="<?php echo  '/admin/'.$val->advertising_url?>" >
+                <ul id="dis"><li>{{$val->advertising_desc}}</li></ul>
+                </tr>
+           <?php endforeach ?> 
+       
     </div>
-    {{--<a href="#"><img src="{{asset('home/images/daikuan-01.jpg')}}" /></a>--}}
+    </div>
+ 
 
     <div class="cd-bn-box">
     </div>
 </div>
+
 
 
 
@@ -148,6 +144,9 @@
             <div class="dai-con-box">
                 <div class="dai-box-ifon3">
                     <div class="dai3-kuai"  style="height:500px">
+
+
+
                         <a href="#"><img src="{{asset('home/images/fed.png')}}" style="width: 785px;height: 500px"/></a>
                         <div style="clear:both;"></div>
                     </div>

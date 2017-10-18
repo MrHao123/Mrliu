@@ -188,32 +188,101 @@
         <!-- 2 -->
         <div class="hy-left-info2" id='two' style="display: none">
             <h3 class="hy-left-title1">我的借款</h3>
-        <div class="hy-if3-k1">
-           
-      
+            <div class="hy-if3-k1">
             <?php foreach($data as $k=>$v) :?>
-            <?php if($v->house_state == 1){ ?>
+            <?php if($v->house_state == 0){ ?>
+
             <div>
                 <ul>
+
                     <div class="jldl-content w1118" style="width: 800px;">
                         <div class="jldl-info">
-                            <h3 class="jldl-if-h31">您提交的信息正在审核中......，审核通知会在10-30分钟内通知您！</h3>
+                            <h3 class="jldl-if-h31">您提交的信息正在审核中......，审核通知会在1-6小时内通知您！</h3>
+
                         </div>
                     </div>
+
                 </ul>
             </div>
 
-            <?php  }else if($v->house_state == 3){ ?>
+            <?php  }else if($v->house_state == 1){ ?>
 
             <div class="jldl-content w1118" style="width: 800px;">
                 <div class="jldl-info">
-                    <h3 class="jldl-if-h31"> <img src="{{asset('home/images/tongguo.jpg')}}" style="width: 50px;height: 25px;"> 您提交的信息初步审核已经通过</h3>
-                    <div id="content" style="text-align:center;margin:px auto;"> <a style="font-size:25px;" href="loan_user">进入下一步审核</a> </div>
+                    <h3 class="jldl-if-h31"> <img src="{{asset('home/images/tongguo.jpg')}}" style="width: 50px;height: 25px;"> 您提交的信息审核已经通过</h3>
+                    <div id="content" style="text-align:center;margin:px auto;"> <a style="font-size:25px;">点我继续申请</a> </div>
                 </div>
             </div>
 
+            <div id="alert" class="">
+                <div class="model-head">
+                    <span class="close">&times;</span>
+                    <h4 class="modal-title">借款申请</h4>
+                </div>
+                <div class="model-content">
+                    <ul class="dai-l2-con f-l">
+                        <form action="loan_adddo" method="post">
 
-            <?php }else { ?>
+                            <li>
+                                <p>贷款类型：</p>
+                                <select name="type_id" id="">
+                                    @foreach($type as $v)
+                                        <option value="{{$v->type_id}}">{{$v->type_name}}</option>
+                                    @endforeach
+                                </select>
+                                <div style="clear:both;"></div>
+                            </li>
+
+                            <li>
+                                <p>贷款期限：</p>
+                                <select name="loan_time" id="">
+                                    @foreach($term as $v)
+                                        <option value="{{$v->term_id}}">{{$v->term_time}}</option>
+                                    @endforeach
+                                </select>
+                                <div style="clear:both;"></div>
+                            </li>
+                            <li>
+                                <p>分期：</p>
+                                <select name="plan" id="">
+                                    @foreach($rate as $v)
+                                        <option value="{{$v->id}}">{{$v->mouth}}</option>
+                                    @endforeach
+                                </select>
+                                <div style="clear:both;"></div>
+                            </li>
+                            <li>
+                                <p>贷款利率：</p>
+                                <select name="loan_rate" id="">
+                                    @foreach($rate as $v)
+                                        <option value="{{$v->id}}">{{$v->rate}}</option>
+                                    @endforeach
+                                </select>
+                                <div style="clear:both;"></div>
+                            </li>
+
+                            <li>
+                                <p>贷款额度：</p>
+                                <input type="text" name="edu"/>
+                                <div style="clear:both;"></div>
+                            </li>
+                            <?php foreach($data as $k=>$v):?>
+                            <input type="hidden" value="<?php echo $v->house_id?>" name="house_id">
+                            <?php endforeach; ?>
+                            <li align="center">
+                                <input type="submit" value="提交信息" align="center" />
+                                <div style="clear:both;"></div>
+                            </li>
+                        </form>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div id="mask"></div>
+
+
+            <?php }else{?>
             <div class="jldl-content w1118" style="width: 800px;">
                 <div class="jldl-info">
                     <h3 class="jldl-if-h31">您提交的信息审核未通过</h3>
@@ -221,7 +290,6 @@
                 </div>
             </div>
             <?php }?>
-
             <?php endforeach ;?>
         </div>
     </div>
@@ -238,15 +306,52 @@
         </div>
     </div>
     <!-- 4 -->
+    <style>
+                #chongzhi {
+                    background: #000;
+                    filter: alpha(opacity=50); /* IE的透明度 */
+                    position: fixed;
+                    top:0px;
+                }
+                #cz{
+                    position: fixed;
+                    top: 20%;
+                    left: 30%;
+                    background-color: #FCF6EA;
+                    width: 580px;
+                    height: 350px;
+                }
+                #close{
+                    position: fixed;
+                    top: 165px;
+                    left: 1000px;
+                }
+            </style>
     <div class="hy-left-info3" id='five' style="display: none">
         <h3 class="hy-left-title1">我的账户</h3>
-        <div class="hy-if3-k1">
-            <center>
+        <div class="hy-if3-k1" id="chongzhi">
+          <!--   <center>
                 <p class="current">我的余额:(显示当前用户下的余额）</p><br><br><br>
                 <p><input type="button" value="我要充值" id="recharge" style="background-color:#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="button" value="我要提现" id="withdraw" style="background-color: #0000ff"></p>
+            </center> -->
+
+
+
+        <form  id="cz" >
+            <table>
+            <center>
+
+                <img src="{{asset('home/images/huiyuan-12.gif')}}" id="close" title="关闭">
+                <p><input type="text" name="cz_card" id="user"  placeholder="卡号"></p>
+                <!-- <p><input type="text" name="cz_type" id="pwd" placeholder="银行"></p>  -->
+                <p><input type="text" name="cz_pwd" id="pwd" placeholder="支付密码"></p>
+                <p><input type="button" id="submit"  class="czsub" value="提交" style="background-color:#11CBBE"></p>
             </center>
-        </div>
+            </table>
+        </form>
+
+
     </div>
 </div>
 <div style="clear:both;"></div>
@@ -278,11 +383,14 @@
     })
 </script>
 <script>
+/*个人信息*/
+
     /* 当前页面高度 */
     var height=document.body.scrollHeight;
     /* 当前页面宽度 */
     var width=document.body.scrollWidth;
     /* 当前页面宽度 */
+
     $("#overlay").height(height);
     $("#overlay").width(width);
     // fadeTo第一个参数为速度，第二个为透明度
@@ -293,6 +401,7 @@
         $('#overlay').fadeOut(200)
     })
     $('.subs').click(function(){
+        
 //        var name=document.getElementsByClassName(user_name).value();
         $.ajax({
             cache: true,
@@ -321,7 +430,7 @@
         $('#overlay').fadeOut(200)
     })
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/flow.js"></script>
 <script type="text/javascript">
     var myAlert = document.getElementById("alert");
@@ -336,9 +445,64 @@
         myAlert.style.display = "none";
         myMask.style.display = "none";
     })
+
+
+
+
+
+
 </script>
 
+<script>
+// 我要充值
+ /* 当前页面高度 */
+    var height=document.body.scrollHeight;
+    /* 当前页面宽度 */
+    var width=document.body.scrollWidth;
+    /* 当前页面宽度 */
+    $("#chongzhi").height(height);
+    $("#chongzhi").width(width);
+    // fadeTo第一个参数为速度，第二个为透明度
+    // 多重方式控制透明度，保证兼容性，但也带来修改麻烦的问题
+    $("#chongzhi").fadeTo(200,0.9);
+    //关闭后隐藏
+    $('#close').click(function(){
+        $('#chongzhi').fadeOut(200)
+    })
 
+    $('.czsub').click(function() {
+//        alert(111);
+//        die;
+
+////        var name=document.getElementsByClassName(user_name).value();
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url:"recharge",
+            data:$('#cz').serialize(),// 你的formid
+            async: false,
+//            dataType:'json',
+            error: function(request) {
+                alert("数据.....500");
+            },
+            success: function(data) {
+                if(data){
+                    alert(data);
+                }
+                // else {
+                //     alert("失败");
+                 }
+//
+//
+////             }
+        });
+
+
+
+
+    //     $('#chongzhi').fadeOut(200)
+     })
+</script>
 </body>
 </html>
 @endsection

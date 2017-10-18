@@ -10,23 +10,21 @@ use DB;
 use App\Http\Requests\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Common;
+
 class AdvertisingController extends CommonController{
     //渲染首页
     public function advertisingadd()
     {
         if($_POST){
-                $advertising_name=$_POST['advertising_name'];
+                    $advertising_name=$_POST['advertising_name'];
+
                  //图片上传
-                $file = $_FILES;
-                $advertising_img = $file['advertising_img']['name'];
-                $advertising_url = "Upload/".$advertising_img;
-                move_uploaded_file($file['advertising_img']['tmp_name'],$advertising_url);
-
-                    // $advertising_img=$_FILES['advertising_img']['name'];
-                    // $advertising_img = "Upload/".$advertising_img;
-                    // move_uploaded_file($advertising_img,$advertising_url);
-
-
+                    $file = $_FILES;
+                    $advertising_imgname = $file['advertising_img']['name'];
+                    $advertising_img = rand(time($advertising_imgname),1000);
+                    $advertising_urls = "admin/Upload/".$advertising_img.".jpg";   //图片保存位置
+                    $advertising_url ="Upload/".$advertising_img.".jpg";       //图片入库url
+                    move_uploaded_file($file['advertising_img']['tmp_name'],$advertising_urls);
 
                     $advertising_desc=$_POST['advertising_desc'];
                     $add=time();
@@ -38,7 +36,7 @@ class AdvertisingController extends CommonController{
 
                     $data= DB::table('advertising')->insert([
                         'advertising_name'=>$advertising_name,
-                        'advertising_img'=>$advertising_img,
+                        'advertising_img'=>$advertising_imgname,
                         'advertising_url'=>$advertising_url,
                         'advertising_desc'=>$advertising_desc,
                         'advertising_addtime'=>$advertising_addtime,
@@ -63,8 +61,7 @@ class AdvertisingController extends CommonController{
     {
 
         $data=DB::table('advertising')->where('advertising_yes_no','=','1')->get();
-
-// print_r($data);die();     
+       
    if($data) {
             return view('admin/advertising/advertisinglist', ['data' => $data]);
         }else{
