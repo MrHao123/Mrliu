@@ -17,33 +17,31 @@ Time: 20:53
 namespace App\Http\Controllers\Home;
 use App\Http\Requests\Request;
 use DB;
-
-use Symfony\Component\HttpFoundation\Session\Session;
+use Session;
 use App\Http\Controllers\Controller;
 
 class VipController extends Controller{
     //渲染首页
     public function vip()
     {
-        $session = new Session;
-        $aa=$session->get("user_id");
-        $select=DB::table('info')->where('user_id','=','1')->get();
-        $data = DB::table('houseloan')->where('user_id',$aa)->get();
-        $term = DB::table('loanterm')->get();
-        $rate = DB::table('year_rate')->get();
-        $type = DB::table('loantype')->get();
+        $user_id=Session::get("user_id");
+        // 查询当前用户个人信息
+        $select=DB::table('info')->where('user_id','=',$user_id)->get();
+        // 查询当前用借款信息
+        $data = DB::table('houseloan')->where('user_id',$user_id)->get();
 
         if($select) {
-            return view('home/vip/vip', ['select' => $select,'data' => $data,'term'=>$term,'rate'=>$rate,'type'=>$type]);
+             return view('home/vip/vip',['select' => $select] ,['data' => $data]);
         }else{
-            return view('home/vip/vip', ['select' => 1]);
+             return view('home/vip/vip', ['select' =>1]);
         }
+        return view('home/vip/vip');
     }
-    //添加个人信息
-    public function information( )
+    //个人信息完善
+ public function information( )
     {
-        $session = new Session;
-        $user_id=$session->get("user_id");
+//        print_r($_POST);
+        $user_id=Session::get("user_id");
         $info_name=$_POST['info_name'];
         $info_card=$_POST['info_card'];
         $info_age=$_POST['info_age'];
@@ -52,10 +50,25 @@ class VipController extends Controller{
         $info_email=$_POST['info_email'];
         $info_address=$_POST['info_address'];
         $info_newaddress=$_POST['info_newaddress'];
-        $info_company=$_POST['info_company'];
-        $info_money=$_POST['info_money'];
+        $info_bankcard=$_POST['info_bankcard'];
+        $info_money=0;
+        $info_pwd=$_POST['info_pwd'];
         $is_del=1;
-        $data= DB::table('info')->insert(['user_id'=>$user_id, 'info_name'=>$info_name,'info_card'=>$info_card,'info_age'=>$info_age,'info_sex'=>$info_sex,'info_tel'=>$info_tel,'info_email'=>$info_email,'info_address'=>$info_address, 'info_newaddress'=>$info_newaddress, 'info_company'=>$info_company,'info_money'=>$info_money,'is_del'=>$is_del]);
+        $data= DB::table('info')->insert([
+            'user_id'=>$user_id,
+            'info_name'=>$info_name,
+            'info_card'=>$info_card,
+            'info_age'=>$info_age,
+            'info_sex'=>$info_sex,
+            'info_tel'=>$info_tel,
+            'info_email'=>$info_email,
+            'info_address'=>$info_address,
+            'info_newaddress'=>$info_newaddress,
+            'info_bankcard'=>$info_bankcard,
+            'info_money'=>$info_money,
+            'info_pwd'=>$info_pwd,
+            'is_del'=>$is_del
+        ]);
         if($data){
             echo 1;
         }else{
@@ -64,26 +77,36 @@ class VipController extends Controller{
         return view('home/vip/vip');
     }
 
-    //充值 recharge
 
-    public function recharge()
-        {
-            //实例化session
-            print_r($_POST);die;
-            
-            // $session = new Session;
-            // $user_id=$session->get("user_id");
-            // //接值
-            // $cz_card = $_POST['cz_card'];
-            // // $cz_type = $_POST['cz_type'];
-            // $cz_pwd = $_POST['cz_pwd'];
-            // $cz_addtime = date('Y-m-d H:i:s');
-            // $is_del=1;
-            // $data = DB::table('recharge')->insert(['cz_card'=>$cz_card,'cz_pwd'=>$cz_pwd,'user_id'=>$user_id,'cz_addtime'=>$cz_addtime,'is_del'=>$is_del]);
-            //     if($data){
-            //         return view('home/vip/recharge');
-            //     }
-        }
+    
+
+
+    //充值 recharge
+     public function recharge()
+     {
+            $user_id=Session::get("user_id");
+            $cz_card = $_POST['cz_card'];
+            $cz_money = $_POST['cz_money'];
+            $cz_pwd = $_POST['cz_pwd'];
+            $p = DB::table('info')->where('info_pwd',$cz_pwd )->where('info_bankcard',$cz_card)->first();
+             $money=$p->info_money;
+             $upmoney=$cz_money+$money;
+//                print_r($upmoney);die;
+
+            if($p){
+                $data=DB::table('info')
+                    ->where('user_id',$user_id)
+                    ->update(['info_money'=>$upmoney]);
+                if($data){
+                    echo 1;
+                }else{
+                    echo 0;
+                }
+            }else{
+                return view('home/vip/vip');
+            }
+
+         }
 
 }
 

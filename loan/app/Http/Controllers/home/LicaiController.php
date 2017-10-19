@@ -39,10 +39,6 @@ class LicaiController extends Controller{
 		//这是取
 			$value=Session::get("key");
 			// var_dump($value);die;
-		// var_dump($value);die;
-// var_dump($value);die;
-		// $value="";
-		// var_dump($value);die;
 		return view("home/licai/company_licai_add",array("userinfo"=>$value,"rate"=>$rate));
 	}
 	//预估利息
@@ -71,12 +67,10 @@ class LicaiController extends Controller{
 		$bool = DB::insert('insert into lz_licai(mouth,licai_money,interest,user_id,begin_time,rate,add_rate) values(?,?,?,?,?,?,?)',[$mouth,$money,$interest,"1",time(),$rate,$add_rate]);
 
 		//修改用户余额   重新存取session
-		
 		if($bool){
 			// return view('home/vip');
 			// ->with('dos', $new_do);
 		}
-		
 	}
 
 	//个人理财

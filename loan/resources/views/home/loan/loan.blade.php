@@ -5,7 +5,6 @@
     <link type="text/css" rel="stylesheet" href="{{asset('home/css/iconfont.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('home/css/layer.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('home/css/call.css')}}" />
-
     <!--18贷款列表页 页面内容开始-->
     <!--banner 图部分-->
     <div class="chedai-banner">
@@ -41,7 +40,7 @@
                             <li class=" animate2">
                                 <div class="process-invest-pic process-invest-iocn13"></div>
                                 <div class="process-invest2-txt1">授信额度</div>
-                                <div class="process-invest2-txt2">1万－500万</div>
+                                <div class="process-invest2-txt2"><?=$v->edu?></div>
                             </li>
                             <li>
                                 <div class="triangle-right3"></div>
@@ -49,7 +48,7 @@
                             <li class="animate2">
                                 <div class="process-invest-pic process-invest-iocn14"></div>
                                 <div class="process-invest2-txt1">贷款利率</div>
-                                <div class="process-invest2-txt2">8%－15%</div>
+                                <div class="process-invest2-txt2"><?=$v->lilv?></div>
                             </li>
                             <li>
                                 <div class="triangle-right3"></div>
@@ -57,7 +56,7 @@
                             <li class=" animate2">
                                 <div class="process-invest-pic process-invest-iocn15"></div>
                                 <div class="process-invest2-txt1">质押物</div>
-                                <div class="process-invest2-txt2">房屋质押</div>
+                                <div class="process-invest2-txt2"><?=$v->zhiyawu?></div>
                             </li>
                             <li>
                                 <div class="triangle-right3"></div>
@@ -65,16 +64,41 @@
                             <li class=" animate2">
                                 <div class="process-invest-pic process-invest-iocn16"></div>
                                 <div class="process-invest2-txt1">借款周期</div>
-                                <div class="process-invest2-txt2">6个月以内</div>
+                                <div class="process-invest2-txt2"><?=$v->zhouqi?></div>
                             </li>
                         </ul>
                     </div>
-                    <a href="loan_mation?id=<?php echo $v->type_id; ?>" id="login"> <div class="btn-reg-box1" id="apply_invest1"><div class="btn-reg pr40 pl40">立 即 申 请</div></div> </a>
+                    <a href="javascript:;" class="login" type_id=<?=$v->type_id?> tableName=<?=$v->table_name?>><div class="btn-reg-box1" id="apply_invest1"><div class="btn-reg pr40 pl40">立 即 申 请</div></div> </a>
                 </div>
             </div>
             <?php endforeach ?>
 
+<script>
+$('.login').click(function(){
+    $.ajax({
+        type:'post',
+        url:'loan',
+        data:{},
+        dataType:'json',
+        success:function(data)
+        {
+            if(data.error==0)
+            {
+                if(window.confirm(data.msg))
+                {
+                    location.href='vip'
+                }
+            }
+            else
+            {
+                alert(data.msg)
+                location.href='loan_mation'
+            }
+        }
+    })
 
+})
+</script>
             <div class="process-title2 mt45"><span>借款流程</span></div>
             <div class=" mt56">
                 <ul class="process-invest w8 pl40">

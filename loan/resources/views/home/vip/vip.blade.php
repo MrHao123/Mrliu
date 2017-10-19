@@ -164,7 +164,6 @@
 
                 <form  id="form" >
                     <center>
-
                         <img src="{{asset('home/images/huiyuan-12.gif')}}" id="imgs" title="关闭">
                         <p><input type="text" name="info_name" id="user"  placeholder="姓名：">&nbsp;&nbsp;
                             <input type="text" name="info_card" id="pwd" placeholder="身份证件："></p>
@@ -189,108 +188,110 @@
         <div class="hy-left-info2" id='two' style="display: none">
             <h3 class="hy-left-title1">我的借款</h3>
             <div class="hy-if3-k1">
-            <?php foreach($data as $k=>$v) :?>
-            <?php if($v->house_state == 0){ ?>
+                <?php foreach($data as $k=>$v) :?>
+                <?php if($v->house_show == 0){ ?>
+                <?php foreach($data as $k=>$v) :?>
+                <?php if($v->house_state == 0){ ?>
+                <div>
+                    <ul>
 
-            <div>
-                <ul>
-
-                    <div class="jldl-content w1118" style="width: 800px;">
-                        <div class="jldl-info">
-                            <h3 class="jldl-if-h31">您提交的信息正在审核中......，审核通知会在1-6小时内通知您！</h3>
-
+                        <div class="jldl-content w1118" style="width: 800px;">
+                            <div class="jldl-info">
+                                <h3 class="jldl-if-h31">您提交的信息正在审核中......，审核通知会在1-6小时内通知您！</h3>
+                            </div>
                         </div>
-                    </div>
-
-                </ul>
-            </div>
-
-            <?php  }else if($v->house_state == 1){ ?>
-
-            <div class="jldl-content w1118" style="width: 800px;">
-                <div class="jldl-info">
-                    <h3 class="jldl-if-h31"> <img src="{{asset('home/images/tongguo.jpg')}}" style="width: 50px;height: 25px;"> 您提交的信息审核已经通过</h3>
-                    <div id="content" style="text-align:center;margin:px auto;"> <a style="font-size:25px;">点我继续申请</a> </div>
-                </div>
-            </div>
-
-            <div id="alert" class="">
-                <div class="model-head">
-                    <span class="close">&times;</span>
-                    <h4 class="modal-title">借款申请</h4>
-                </div>
-                <div class="model-content">
-                    <ul class="dai-l2-con f-l">
-                        <form action="loan_adddo" method="post">
-
-                            <li>
-                                <p>贷款类型：</p>
-                                <select name="type_id" id="">
-                                    @foreach($type as $v)
-                                        <option value="{{$v->type_id}}">{{$v->type_name}}</option>
-                                    @endforeach
-                                </select>
-                                <div style="clear:both;"></div>
-                            </li>
-
-                            <li>
-                                <p>贷款期限：</p>
-                                <select name="loan_time" id="">
-                                    @foreach($term as $v)
-                                        <option value="{{$v->term_id}}">{{$v->term_time}}</option>
-                                    @endforeach
-                                </select>
-                                <div style="clear:both;"></div>
-                            </li>
-                            <li>
-                                <p>分期：</p>
-                                <select name="plan" id="">
-                                    @foreach($rate as $v)
-                                        <option value="{{$v->id}}">{{$v->mouth}}</option>
-                                    @endforeach
-                                </select>
-                                <div style="clear:both;"></div>
-                            </li>
-                            <li>
-                                <p>贷款利率：</p>
-                                <select name="loan_rate" id="">
-                                    @foreach($rate as $v)
-                                        <option value="{{$v->id}}">{{$v->rate}}</option>
-                                    @endforeach
-                                </select>
-                                <div style="clear:both;"></div>
-                            </li>
-
-                            <li>
-                                <p>贷款额度：</p>
-                                <input type="text" name="edu"/>
-                                <div style="clear:both;"></div>
-                            </li>
-                            <?php foreach($data as $k=>$v):?>
-                            <input type="hidden" value="<?php echo $v->house_id?>" name="house_id">
-                            <?php endforeach; ?>
-                            <li align="center">
-                                <input type="submit" value="提交信息" align="center" />
-                                <div style="clear:both;"></div>
-                            </li>
-                        </form>
                     </ul>
                 </div>
+                <?php  }else if($v->house_state == 3){  ?>
+                <div class="jldl-content w1118" style="width: 800px;">
+                    <div class="jldl-info">
+                        <h3 class="jldl-if-h31"> <img src="{{asset('home/images/tongguo.jpg')}}" style="width: 50px;height: 25px;"> 您提交的初信息审核已经通过</h3>
 
-            </div>
-
-            <div id="mask"></div>
-
-
-            <?php }else{?>
-            <div class="jldl-content w1118" style="width: 800px;">
-                <div class="jldl-info">
-                    <h3 class="jldl-if-h31">您提交的信息审核未通过</h3>
-                    <div id="content" style="text-align:center;margin:px auto;"> <a style="font-size:25px;">点我查看明细</a> </div>
+                        <div id="content" style="text-align:center;margin:px auto;"> <a style="font-size:25px;"  >点我继续申请</a> </div>
+                    </div>
                 </div>
-            </div>
-            <?php }?>
-            <?php endforeach ;?>
+
+                <div id="alert" class="">
+                    <div class="model-head">
+
+                        <h4 class="modal-title">借款申请</h4>
+                    </div>
+                    <div class="model-content">
+                        <ul class="dai-l2-con f-l">
+                            <form action="credit_add" method="post">
+                                <li>
+                                    <p>贷款人：</p>
+                                    <input type="text" name=" credit_name" />
+                                    <span class="tip user_hint2"></span>
+                                    <div style="clear:both;"></div>
+                                </li>
+                                <li>
+                                    <p>贷款额度：</p>
+                                    <input type="text" name=" credit_money" />
+                                    <span class="tip user_hint2"></span>
+                                    <div style="clear:both;"></div>
+                                </li>
+                                <li align="center">
+                                    <input type="submit" value="提交信息" style="margin-left: 140px;"  class="close"/>
+                                    <div style="clear:both;"></div>
+                                </li>
+                            </form>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div id="mask"></div>
+                <?php }else{?>
+                <div class="jldl-content w1118" style="width: 800px;">
+                    <div class="jldl-info">
+                        <h3 class="jldl-if-h31">您提交的信息审核未通过</h3>
+                        <div id="content" style="text-align:center;margin:px auto;"> <a style="font-size:25px;">点我查看明细</a> </div>
+                    </div>
+                </div>
+                <?php }?>
+                <?php endforeach ;?>
+                <?php }else if($v->house_show == 1){ ?>
+
+                    <?php foreach($reg as $k=>$v) :?>
+                    <?php if($v->credit_state == 1){ ?>
+
+                    <div>
+                        <ul>
+
+                            <div class="jldl-info">
+                                <h3 class="jldl-if-h31">您提交的第二次信息正在审核中......，审核通知会在10-30分钟内通知您！</h3>
+
+                            </div>
+
+                        </ul>
+                    </div>
+                    <?php  }else if($v->credit_state == 3){ ?>
+
+                    <div class="jldl-info">
+                        <h3 class="jldl-if-h31"> <img src="{{asset('home/images/tongguo.jpg')}}" style="width: 50px;height: 25px;"> 您的第二次审核已经通过</h3>
+                        <br>
+                        <div id="content" style="text-align:center;margin:px auto;"> <a style="font-size:25px;" href="loan_user">立即贷款</a> </div>
+                    </div>
+                    <?php }else{ ?>
+
+                    <div class="jldl-info">
+                        <h3 class="jldl-if-h31">您的第二次信息审核未通过</h3>
+                        <br>
+                        <div id="content" style="text-align:center;margin:px auto;"> <a style="font-size:25px;">点我查看明细</a> </div>
+                    </div>
+                    <?php }?>
+                    <?php endforeach ;?>
+
+                <?php }else { ?>
+                <h1>asdas</h1>
+                <?php }?>
+                <?php endforeach ?>
+
+
+
+
         </div>
     </div>
     <!-- 3 -->
@@ -351,7 +352,6 @@
             </table>
         </form>
 
-
     </div>
 </div>
 <div style="clear:both;"></div>
@@ -360,8 +360,6 @@
 </div>
 <div style="clear:both;"></div>
 </div>
-
-{{--<form action=""></form>--}}
 
 <script>
     $(".li-gr").click(function(){

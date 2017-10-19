@@ -21,10 +21,7 @@ class loginController extends Controller{
     {
         //接值
         $input = $request->input();
-        
         $user_email = $input['user_email'];
-//print_r($input);die;
-        // echo $user_email;die;
         $user_pwd = Md5($input['user_pwd']);
         $captcha = $input['captcha'];
         if(empty($user_email))
@@ -40,7 +37,6 @@ class loginController extends Controller{
             echo "<script>alert('验证码错误');location.href='login';</script>";die;
         }
         $arr = DB::table('user')->where('user_email',$user_email)->first();
-        //print_r($arr);die;
         //密码
         if($arr->user_pwd != $user_pwd)
         {
@@ -48,6 +44,10 @@ class loginController extends Controller{
         }else
         {
             Session::put('user_email', $user_email);
+
+            $array=['user_id'=>$arr->user_id,'user_name'=>$arr->user_name];
+            Session::put('sign', $array);
+            Session::put('user_id', $arr->user_id);
             return redirect('home/index');
         }  
     }
